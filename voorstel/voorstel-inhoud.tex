@@ -3,24 +3,55 @@
 \section{Introductie} % The \section*{} command stops section numbering
 \label{sec:introductie}
 
-Hier introduceer je werk. Je hoeft hier nog niet te technisch te gaan.
+Flutter de UI-toolkit van Google voor het ontwikkelen van mobiele-, web- en desktop applicaties,
+heeft gezorgd voor een opvallende beweging omtrend ontwikkelings frameworks.
+Nog geen jaar na de officiële release zijn bedrijven in actie geschoten met het implementeren van Flutter
+in hun applicaties.
+Met als grootste concurrent React Native heeft Flutter enkele oorzaken voor haar populariteit: snelle ontwikkelingsomgeving (Hot Reload) en native prestaties zijn hier enkele van.
+Door de toenemende populariteit is er als maar meer vraag gekomen van zowel beginnende als
+reeds ervaren ontwikkelaars naar de ``juiste manier'' voor het benaderen van State Management in Flutter.
+State Mangement kan kort omschreven worden als het resultaat van alle acties die de gebruiker heeft
+uitgevoerd.
+Denk maar aan een incrementeer knop die de waarde van een teller verhoogt wanneer op de knop wordt gedrukt, hier moet de state van de teller bijgehouden worden.
 
-Je beschrijft zeker:
+Door het ontwikkelingsteam van Flutter wordt State Management beschouwd als een complex onderwerp. Volgens hen bestaat geen perfecte benadering van State Managementen, een bepaalde benadering zal altijd zijn voor- en nadelen hebben.
 
+Zowel nieuwkomers in het Flutter framework als reeds ervaren ontwikkelaars hebben 
+veel onzekerheden over de benadering van State Management.
+Het doel van dit onderzoek is om een duidelijk beeld te scheppen over hoeveel impact
+verschillende benaderingen van een State Management in Flutter hebben op een applicatie.
+Tijdens het onderzoek wordt er gekeken naar de complexiteit van de gekozen benadering van State Management en de gevolgen ervan voor de prestaties.
+
+Met oog op het bekomen van een conclusie voor dit onderzoek
+zullen onderstaande onderzoeksvragen eerst beantwoord moeten worden:
 \begin{itemize}
-  \item de probleemstelling en context
-  \item de motivatie en relevantie voor het onderzoek
-  \item de doelstelling en onderzoeksvraag/-vragen
+    \item Hoe ver staat Flutter anno eind 2019?
+    \item Wat is State Management in Flutter?
+    \item Hoeveel verschilt de geschreven code bij verschillende benaderingen van State Management, m.a.w. hoe snel 
+    ken een benadering van State Management geschreven worden?
+    \item Hoe variëren de prestaties bij de verschillende benaderingen van State Management?
 \end{itemize}
+    
+Deze onderzoeksvragen zullen een antwoord bieden op de hoofdonderzoeksvraag: hoeveel impact hebben verschillende benaderingen van State Management in Flutter.
 
 %---------- Stand van zaken ---------------------------------------------------
 
 \section{State-of-the-art}
 \label{sec:state-of-the-art}
+\subsection*{Flutter}
+Flutter is een relatief nieuw framework. Sinds de eerste stabiele release in december 2018 is de populariteit
+van Flutter enorm toegenomen. Door het bereiken van het grote publiek duiken tal van vragen op in verband met 
+State Management in Flutter. Op dit moment zijn er nog geen wetenschappelijke artikels verschenen in verband met dit topic.
+Er is reeds een vergelijkende studie uitgevoerd tussen React Native, een open-source framework voor mobiele applicaties en Flutter \autocite{Wu2018}.
 
-Hier beschrijf je de \emph{state-of-the-art} rondom je gekozen onderzoeksdomein. Dit kan bijvoorbeeld een literatuurstudie zijn. Je mag de titel van deze sectie ook aanpassen (literatuurstudie, stand van zaken, enz.). Zijn er al gelijkaardige onderzoeken gevoerd? Wat concluderen ze? Wat is het verschil met jouw onderzoek? Wat is de relevantie met jouw onderzoek?
+Verder werd een uitgebreide vergelijking gemaakt hoe Flutter zich verhoudt tegenover native Android, native IOS,
+React Native en Xamarin Forums \autocite{Coninck2019}.
+Hierin wordt Flutter uitvoerig besproken en wordt een experiment opgesteld waar vergeleken wordt hoelang het duurt
+om een applicatie te ontwikkelen met dezelfde layout. Tijdens dit experiment werd ook het performantieverschil gemeten bij de verschillende applicaties. 
 
-Verwijs bij elke introductie van een term of bewering over het domein naar de vakliteratuur, bijvoorbeeld~\autocite{Doll1954}! Denk zeker goed na welke werken je refereert en waarom.
+%Hier beschrijf je de \emph{state-of-the-art} rondom je gekozen onderzoeksdomein. Dit kan bijvoorbeeld een literatuurstudie zijn. Je mag de titel van deze sectie ook aanpassen (literatuurstudie, stand van zaken, enz.). Zijn er al gelijkaardige onderzoeken gevoerd? Wat concluderen ze? Wat is het verschil met jouw onderzoek? Wat is de relevantie met jouw onderzoek?
+%
+%Verwijs bij elke introductie van een term of bewering over het domein naar de vakliteratuur, bijvoorbeeld Denk zeker goed na welke werken je refereert en waarom.
 
 % Voor literatuurverwijzingen zijn er twee belangrijke commando's:
 % \autocite{KEY} => (Auteur, jaartal) Gebruik dit als de naam van de auteur
@@ -29,23 +60,66 @@ Verwijs bij elke introductie van een term of bewering over het domein naar de va
 %   functie heeft in de zin (bv. ``Uit onderzoek door Doll & Hill (1954) bleek
 %   ...'')
 
-Je mag gerust gebruik maken van subsecties in dit onderdeel.
+%Je mag gerust gebruik maken van subsecties in dit onderdeel.
+
+\subsection*{State Management}
+Op de officiële site van Flutter wordt een sectie besteed aan State Management.
+Met name op welke manieren state management benaderd kan worden, maar er zijn nog geen grote
+onderzoeken of bachelorproeven geschreven waarin de verschillende benaderingen uitvoerig worden getest.
+
+De resultaten van dit onderzoek kunnen gebruikt worden om in verdere stadia van Flutter
+een geschikte benadering van State Management te bekomen, rekeninghoudend met de complexiteit en prestaties
+van de gekozen benadering.
+
 
 %---------- Methodologie ------------------------------------------------------
 \section{Methodologie}
 \label{sec:methodologie}
+Tijdens dit onderzoek wordt er een experiment opgesteld waar een mobiele applicatie wordt gemaakt 
+telkens met een verschillende benadering van State Management. 
+Hierop volgt een analyse waar gekeken wordt hoeveel lijnen code vereist zijn voor het uitschrijven van
+desbetreffende benadering van State Management. Dit gedeelte omvat ook het bepalen van de complexiteit.
+Bij de ontwikkelde applicatie worden per State Management de prestaties gemeten.
+De prestaties kunnen omschreven worden als de gespendeerde tijd op de GPU- en CPU-thread.
 
-Hier beschrijf je hoe je van plan bent het onderzoek te voeren. Welke onderzoekstechniek ga je toepassen om elk van je onderzoeksvragen te beantwoorden? Gebruik je hiervoor experimenten, vragenlijsten, simulaties? Je beschrijft ook al welke tools je denkt hiervoor te gebruiken of te ontwikkelen.
+De verschillende benaderingen van State Management die tijdens het experiment onderzocht zullen worden zijn de volgende: \emph{InheritedWidget \& InheritedModel}, 
+\emph{Provider \& Scoped Model}, \emph{Redux}, \emph{BLoC / Rx} en \emph{MobX}.
+Deze verschillende benaderingen worden aangeraden op de officiële site van Flutter.
+
+Dit experiment zal een paar tools vereisten zoals Adobe XD om de layout vast te leggen van de applicatie,
+daarnaast zal Microsoft Visual Studio Code gebruikt worden om de applicatie te schrijven.
+Tijdens het het ontwikkelen van de mobiele applicatie wordt een Android Emulator gebruikt. Voor het meten van de prestaties zal de applicatie op een fysiek apparaat gebruikt worden, deze resultaten zullen gemeten worden via de DevTools plugin van Dart in Visual Studio Code.
+
+Indien tijdens het experiment problemen optreden wordt er geraadpleegd bij Didier Boelens,
+een bekende Belgische pionier in de Flutter community, die ook heeft toegestemd in het helpen van deze bachelorproef.
+
+%
+%Hier beschrijf je hoe je van plan bent het onderzoek te voeren. Welke onderzoekstechniek ga je toepassen om elk van je onderzoeksvragen te beantwoorden? Gebruik je hiervoor experimenten, vragenlijsten, simulaties? Je beschrijft ook al welke tools je denkt hiervoor te gebruiken of te ontwikkelen.
 
 %---------- Verwachte resultaten ----------------------------------------------
 \section{Verwachte resultaten}
 \label{sec:verwachte_resultaten}
 
-Hier beschrijf je welke resultaten je verwacht. Als je metingen en simulaties uitvoert, kan je hier al mock-ups maken van de grafieken samen met de verwachte conclusies. Benoem zeker al je assen en de stukken van de grafiek die je gaat gebruiken. Dit zorgt ervoor dat je concreet weet hoe je je data gaat moeten structureren.
+De applicaties die geschreven worden in de verschillende benaderingen van State Management zullen
+geanalyseerd worden op basis van de complexiteit, instapklaarheid, schaalbaardheid en prestaties.
+Er wordt verwacht dat de complexere State Management betere prestaties met zich te weeg zal brengen.
+Deze prestaties zullen echter niet met het blote oog te zien zijn, maar zullen zich wel in de 
+gemeten cijfers reflecteren.
+
+%Hier beschrijf je welke resultaten je verwacht. Als je metingen en simulaties uitvoert, kan je hier al mock-ups maken van de grafieken samen met de verwachte conclusies. Benoem zeker al je assen en de stukken van de grafiek die je gaat gebruiken. Dit zorgt ervoor dat je concreet weet hoe je je data gaat moeten structureren.
 
 %---------- Verwachte conclusies ----------------------------------------------
 \section{Verwachte conclusies}
 \label{sec:verwachte_conclusies}
+Uit dit onderzoek zal blijken dat \emph{Provider} de meest instapklare benadering van state management
+zal zijn, zoals reeds aangeraden door het Flutter team.
+Daarnaast zal blijken dat benaderingen door \emph{Redux, Mobx, Bloc} minder instapklaar zijn, maar een 
+betere schaalbaarheid hebben.
+Het verschil in de gemeten prestaties voor de verschillende benaderingen zullen relatief klein zijn, al dan niet significant verschillend.
 
-Hier beschrijf je wat je verwacht uit je onderzoek, met de motivatie waarom. Het is \textbf{niet} erg indien uit je onderzoek andere resultaten en conclusies vloeien dan dat je hier beschrijft: het is dan juist interessant om te onderzoeken waarom jouw hypothesen niet overeenkomen met de resultaten.
+Welke benadering voor State Management gekozen wordt is nog steeds subjectief, aangezien elke ontwikkelaar een voorkeur heeft. Dit onderzoek zal er voor zorgen
+dat bijkomende argumenten kunnen voorgelegd worden om al dan niet een bepaald State Management te hanteren.
+
+
+%Hier beschrijf je wat je verwacht uit je onderzoek, met de motivatie waarom. Het is \textbf{niet} erg indien uit je onderzoek andere resultaten en conclusies vloeien dan dat je hier beschrijft: het is dan juist interessant om te onderzoeken waarom jouw hypothesen niet overeenkomen met de resultaten.
 
