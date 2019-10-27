@@ -5,32 +5,55 @@
 \chapter{\IfLanguageName{dutch}{Inleiding}{Introduction}}
 \label{ch:inleiding}
 
-De inleiding moet de lezer net genoeg informatie verschaffen om het onderwerp te begrijpen en in te zien waarom de onderzoeksvraag de moeite waard is om te onderzoeken. In de inleiding ga je literatuurverwijzingen beperken, zodat de tekst vlot leesbaar blijft. Je kan de inleiding verder onderverdelen in secties als dit de tekst verduidelijkt. Zaken die aan bod kunnen komen in de inleiding~\autocite{Pollefliet2011}:
+% Algemene inleiding van Flutter, nog geen sprake van een 'probleem'
+Door de introductie van Flutter is het ontwikkelen van cross-platform applicaties een stuk toegankelijker gemaakt. Flutter is zeer bereikbaar voor nieuwe ontwikkelaars, maar beperkt zich niet om complexere applicaties te ontwikkelen. Dit reflecteert zich in de voldoende Proof of Concepts die reeds gepubliceerd zijn. Flutter maakt het mogelijk om een applicatie, zowel een mobiele als webapplicatie, te ontwikkelen met één enkele codebase. Flutter heeft zijn recentelijke populariteit te danken aan de levende community die het Open-Source project onderhoudt. Flutter kan beschouwd worden als een succesvol product geïntroduceerd door Google.
+\newline
 
-\begin{itemize}
-  \item context, achtergrond
-  \item afbakenen van het onderwerp
-  \item verantwoording van het onderwerp, methodologie
-  \item probleemstelling
-  \item onderzoeksdoelstelling
-  \item onderzoeksvraag
-  \item \ldots
-\end{itemize}
+%De inleiding moet de lezer net genoeg informatie verschaffen om het onderwerp te begrijpen en in te zien waarom de onderzoeksvraag de moeite waard is om te onderzoeken. In de inleiding ga je literatuurverwijzingen beperken, zodat de tekst vlot leesbaar blijft. Je kan de inleiding verder onderverdelen in secties als dit de tekst verduidelijkt. Zaken die aan bod kunnen komen in de inleiding~\autocite{Pollefliet2011}:
+
+%\begin{itemize}
+%  \item context, achtergrond
+%  \item afbakenen van het onderwerp
+%  \item verantwoording van het onderwerp, methodologie
+%  \item probleemstelling
+%  \item onderzoeksdoelstelling
+%  \item onderzoeksvraag
+%  \item \ldots
+%\end{itemize}
 
 \section{\IfLanguageName{dutch}{Probleemstelling}{Problem Statement}}
 \label{sec:probleemstelling}
 
-Uit je probleemstelling moet duidelijk zijn dat je onderzoek een meerwaarde heeft voor een concrete doelgroep. De doelgroep moet goed gedefinieerd en afgelijnd zijn. Doelgroepen als ``bedrijven,'' ``KMO's,'' systeembeheerders, enz.~zijn nog te vaag. Als je een lijstje kan maken van de personen/organisaties die een meerwaarde zullen vinden in deze bachelorproef (dit is eigenlijk je steekproefkader), dan is dat een indicatie dat de doelgroep goed gedefinieerd is. Dit kan een enkel bedrijf zijn of zelfs één persoon (je co-promotor/opdrachtgever).
+Door deze populariteit en uitermate toegankelijkheid voor nieuwe ontwikkelaars, voor zowel het ontwikkelen van mobiele- als webapplicaties (vooral gericht op de mobiele applicaties) duiken er tal van vragen op hoe het beheren van State in de applicatie aangepakt moet worden. Nieuwe ontwikkelaars gaan hoogstwaarschijnlijk de verkeerd aanpak hanteren. Niettemin dat deze applicatie werkt, maar eerder over de rommelige manier waarop de code geschreven is.
+Dit is een erkend probleem door de ontwikkelaars van Flutter...
+\newline
+In deze bachelorproef wordt aangetoond welke benadering van State Management in Flutter de beste prestaties met zich teweegbrengt, zo-ook de complexiteit. Het resultaat van dit onderzoek zal een meerwaarde bieden voor de Flutter community, voor nieuwkomers in het framework worden de minder complexe benaderingen afgebakend worden. Om te beginnen wordt er een literatuurstudie uitgevoerd, met een beknopte samenvatting van Flutter anno eind 2019 en wat is State Management. Aansluitend wordt een experiment opgesteld, waarbij dezelfde mobiele applicatie wordt ontwikkeld in de verschillende benaderingen. Nadat de applicatie is geschreven, worden de prestaties gemeten en de aantal geschreven lijnen broncode geteld. Dit is terug te vinden in Hoofdstuk 3. In Hoofdstuk 4 wordt de conclusie van deze bachelorproef opgelijst.
+%Uit je probleemstelling moet duidelijk zijn dat je onderzoek een meerwaarde heeft voor een concrete doelgroep. De doelgroep moet goed gedefinieerd en afgelijnd zijn. Doelgroepen als ``bedrijven,'' ``KMO's,'' systeembeheerders, enz.~zijn nog te vaag. Als je een lijstje kan maken van de personen/organisaties die een meerwaarde zullen vinden in deze bachelorproef (dit is eigenlijk je steekproefkader), dan is dat een indicatie dat de doelgroep goed gedefinieerd is. Dit kan een enkel bedrijf zijn of zelfs één persoon (je co-promotor/opdrachtgever).
 
 \section{\IfLanguageName{dutch}{Onderzoeksvraag}{Research question}}
 \label{sec:onderzoeksvraag}
 
-Wees zo concreet mogelijk bij het formuleren van je onderzoeksvraag. Een onderzoeksvraag is trouwens iets waar nog niemand op dit moment een antwoord heeft (voor zover je kan nagaan). Het opzoeken van bestaande informatie (bv. ``welke tools bestaan er voor deze toepassing?'') is dus geen onderzoeksvraag. Je kan de onderzoeksvraag verder specifiëren in deelvragen. Bv.~als je onderzoek gaat over performantiemetingen, dan 
+\subsection{Hoofdonderzoeksvraag}
+Hoeveel impact hebben verschillende benaderingen van State Management in Flutter?
+
+\subsection{Deelonderzoeksvragen}
+Om de impact vatbaar te maken worden de volgende deelonderzoeksvragen opgesteld:
+Hoeveel verschilt de geschreven code bij verschillende benaderingen van State Management, m.a.w.
+hoe snel ken een benadering van State Management geschreven worden? De aantal vereiste lijnen code
+worden gemeten en met elkaar vergeleken?
+Hoe varieren de prestaties bij de verschillende benaderingen van State Management?
+\newline
+Deze deelonderzoeksvragen zullen samen met de literatuurstudie een antwoord bieden op de hoofdonderzoekvraag. Dit antwoord staat genoteerd in Hoofdstuk 5.
+
+%Wees zo concreet mogelijk bij het formuleren van je onderzoeksvraag. Een onderzoeksvraag is trouwens iets waar nog niemand op dit moment een antwoord heeft (voor zover je kan nagaan). Het opzoeken van bestaande informatie (bv. ``welke tools bestaan er voor deze toepassing?'') is dus geen onderzoeksvraag. Je kan de onderzoeksvraag verder specifiëren in deelvragen. Bv.~als je onderzoek gaat over performantiemetingen, dan 
 
 \section{\IfLanguageName{dutch}{Onderzoeksdoelstelling}{Research objective}}
 \label{sec:onderzoeksdoelstelling}
 
-Wat is het beoogde resultaat van je bachelorproef? Wat zijn de criteria voor succes? Beschrijf die zo concreet mogelijk. Gaat het bv. om een proof-of-concept, een prototype, een verslag met aanbevelingen, een vergelijkende studie, enz.
+Het ontwikkelingsteam van Flutter heeft reeds verschillende benaderingen van State Management aangeraden, maar deze zijn opgedeeld op basis van hun moeilijkheidsgraad. Het topic State Management wordt beschouwd als een ingewikkeld onderwerp. Er zijn geen onderzoeken gebeurd wat de verschillende benaderingen nu effectief met zich meerbrengt, qua prestaties.
+
+Dit onderzoek zal een richtlijn bieden om een bepaalde benaderingen van State Management al dan niet te hanteren in een Flutter applicatie. 
+%Wat is het beoogde resultaat van je bachelorproef? Wat zijn de criteria voor succes? Beschrijf die zo concreet mogelijk. Gaat het bv. om een proof-of-concept, een prototype, een verslag met aanbevelingen, een vergelijkende studie, enz.
 
 \section{\IfLanguageName{dutch}{Opzet van deze bachelorproef}{Structure of this bachelor thesis}}
 \label{sec:opzet-bachelorproef}
@@ -46,5 +69,14 @@ In Hoofdstuk~\ref{ch:stand-van-zaken} wordt een overzicht gegeven van de stand v
 In Hoofdstuk~\ref{ch:methodologie} wordt de methodologie toegelicht en worden de gebruikte onderzoekstechnieken besproken om een antwoord te kunnen formuleren op de onderzoeksvragen.
 
 % TODO: Vul hier aan voor je eigen hoofstukken, één of twee zinnen per hoofdstuk
+In Hoofdstuk~\ref{ch:experiment} worden de resultaten van het experiment opgelijst en besproken.
 
 In Hoofdstuk~\ref{ch:conclusie}, tenslotte, wordt de conclusie gegeven en een antwoord geformuleerd op de onderzoeksvragen. Daarbij wordt ook een aanzet gegeven voor toekomstig onderzoek binnen dit domein.
+
+% FLutter 
+% - introductie
+% - veranderd in 2019? Flutter, web & dart 2.5
+% State Management
+% - algemene uitleg
+% - state management in Flutter
+% --- benaderingen oplijsten (aangeraden via site?)
