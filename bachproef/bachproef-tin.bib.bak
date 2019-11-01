@@ -81,10 +81,10 @@ beide native applicaties te maken (42 uren en 14 minuten).},
 }
 
 @Online{Leler2017a,
-  author = {Michael Thomsen},
+  author = {Wm Leler},
   title  = {Announcing Dart 2.5: Super-charged development},
   year   = {2019},
-  date   = {2019-09-10},
+  date   = {2019.09.10},
   url    = {https://medium.com/dartlang/announcing-dart-2-5-super-charged-development-328822024970},
 }
 
