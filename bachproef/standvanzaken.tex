@@ -156,14 +156,14 @@ De ScopedModel widget heeft een mogelijkheid om een Model mee te geven, dit zorg
 
 Als laatste gebruikt ScopedModel een ScopedModelDescendant, dit is een speciale widget. Deze widget reageert op wijzigingen in het Model. Als notifyListeners() wordt opgeroepen wordt deze widget herbouwd.
 ScopedModelDescendant heeft een verplichte \verb|builder| functie. Het type van Model waar de widget naar luistert wordt gedifinieerd tussen \verb|< >|
-\begin{verbatim}
+\begin{minted}{dart}
  ScopedModelDescendant<CounterModel>(
     builder: (context, child, model) {
-        return Text(                          model.counter.toString(), 
+        return Text(model.counter.toString(), 
         );
     },
 ),
-\end{verbatim}
+\end{minted}
 Hier wordt er geluisterd naar een wijziging in een \verb|CounterModel|. Wanneer deze wijzigt wordt de builder, met andere woorden \verb|notifyListeners()| wordt opgeroepen in het model, wordt de \verb|builder| functie aangeroepen. De waarde van de counter wordt op het scherm getoond. Nu is het mogelijk op om een ander scherm de counter te verhogen en wordt de tekst automatisch herbouwd. Er kan ook gebruikt worden van \verb|ScopedModel.of<CounterModel>(context)| om het model op te roepen in eender welke widget.
 
 Als er meerdere modellen beschikbaar moeten zijn, kunnen de ScopedModelDescendant widgets genest worden of opnieuw via de static methode \verb|ScopedModel.of| opgeroepen worden.
@@ -181,13 +181,16 @@ Een nieuwkomer in het Flutter framework wordt aangeraden om het Provider package
 Het Provider package maakt het mogelijk om data beschikbaar te maken voor wie het nodig heeft. Daarom moet de Provider widget als voorouder geplaatst worden in de Widget tree.
 
 Stel de volgende code is gegeven:
-\begin{verbatim}
+\mint{dart}|const do = Provider.of(context).value|
+\begin{minted}{dart}
 Provider<CounterModel>(
     builder: (BuildContext context) => CounterModal(),
-    dispose: (BuildContext context, CounterModel counterModel) => counterModel.dispose(),
+    dispose: (BuildContext context, CounterModel counterModel) {
+        counterModel.dispose(),
+    },
     child: Container(),
 );
-\end{verbatim}
+\end{minted}
 
 Hier wordt een CounterModel eenmalig aangemaakt, vervolgens wordt aan het Provider widget meegegeven wat er moet gebeuren als het Provider widget wordt verwijderd van de Widget tree. Nu is het mogelijk om in de kinderen van het Provider widget het CounterModel op te vragen via \verb|final counterModel = Provider.of<CounterModel>(context);|
 bijvoorbeeld in de Container die meegegeven wordt aan het \verb|child| property, of in een kind van deze Container.
@@ -241,7 +244,7 @@ Op een broadcast stream kunnen er meerdere luisteraars zijn. Het is mogelijk om 
 
 De implementatie van Streams in Flutter worden standaard meegeleverd. Om een stream te visualiseren in een widget kan een StreamBuilder gebruikt worden. Deze StreamBuilder is in feite niet meer dan een StatefulWidget die opgebouwd wordt wanneer er een nieuwe data in een stream is.
 Een voorbeeld van zo'n StreamBuilder:
-\begin{verbatim}
+\begin{minted}{dart}
 StreamBuilder<Counter>(
     stream: counterStream,
     initialData: 0,
@@ -252,7 +255,7 @@ StreamBuilder<Counter>(
         return CircularSpinner()
     },
 )
-\end{verbatim}
+\end{minted}
 De initiële data wordt ingesteld op 0 wanneer de \verb|counterStream| nog geen data bevat, de \verb|builder| functie zorgt ervoor dat de StreamBuilder weet welk widget opgebouwd moet worden wanneer een stream nieuwe data bevat.
 
 In volgende sectie wordt het rxDart package besproken, deze package breidt de functionaliteit van de originele Dart Streams uit om te voldoen aan de ReactiveX standaarden.
@@ -341,14 +344,14 @@ De Observables bevatten de state van de applicatie. Een Observable kan een primi
 
 De Actions definiëren hoe de Observables gemuteerd moeten worden. Opnieuw is zoals in Redux een scheiding gemaakt zodat de waarden nooit direct aangepast kunnen worden, ook hier wordt de mutatie uitgevoerd door de Action.
 Een voorbeeld van een action:
-\begin{verbatim}
+\begin{minted}{dart}
 final increment = Action((){
     counter.value++;
 });    
-\end{verbatim}
+\end{minted}
 
 De Reactions voltooien de MobX-triade, zij zijn de waarnemers van de Observables. Een Reaction houdt als het ware een Observable bij en telkens wanneer een Observable wijzigt wordt de Reaction verwittigd. Er zijn een paar verschillende vormen van een Reaction, maar ze geven allemaal een \verb|ReactionDisposer| terug. Deze \verb|ReactionDisposer| is een functie dat kan worden opgeroepen om de reaction weg te gooien. Een voorbeeld van de \verb|autorun| Reaction:
-\begin{verbatim}
+\begin{minted}{dart}
 String counter = Observable(0);
 
 final dispose = autorun((_) {
@@ -362,7 +365,7 @@ dispose();
 // Prints:
 // 0
 // 1
-\end{verbatim}
+\end{minted}
 
 Deze drie principes zijn terug te vinden op figuur \ref{fig:mobx-principles}:
 
