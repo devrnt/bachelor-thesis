@@ -52,12 +52,6 @@ Dit wil zeggen dat de applicatie met native prestaties op de apparaten gebruikt 
 \end{figure}
 
 Nadeel is hier dat een ontwikkelaar dezelfde applicatie moet schrijven voor de verschillende platformen aangezien deze andere SDK's (Software Development Kit) hanteren. \autocite{Coninck2019}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\figureWidthModifier\linewidth]{img/stand-van-zaken/native-app-architecture.png}
-    \caption{De architectuur van een native applicatie}
-    \label{fig:flutter-app-architecture}
-\end{figure}
 
 Andere cross-platform frameworks zoals React Native, maken gebruik van een vertaler. In het geval van React Native is dit de JavaScript Bridge. De geschreven JavaScript code wordt door de JavaScript Bridge omgezet om de native platformen te kunnen aanspreken, zoals te zien op \ref{fig:react-native-app-architecture}  \autocite{Kuitunen2019}
 
@@ -211,12 +205,12 @@ De \verb|Provider| package is op zich niet heel veel verschillend van de \verb|S
 
 \subsection{BloC met RxDart}
 \subsection*{Business Logic Component}
-Het BloC patroon dat staat voor Business Logic Component werd oorspronkelijk aangeboden als oplossing voor het delen van dezelfde business logica tussen Flutter en AngularDart. Hedendaags wordt BloC door Google aangeraden als een superieure State Management techniek. Het BloC pattern maakt gebruik van Streams die beschikbaar zijn in Dart, maar vaak wordt beroep gedaan op een gebruiksvriendelijkere library ReactiveX , library is beschikbaar onder de naam rxDart, de ReactiveX implementatie in de Dart taal.
+Het BloC patroon dat staat voor Business Logic Component werd oorspronkelijk aangeboden als oplossing voor het delen van dezelfde business logica tussen Flutter en AngularDart. Hedendaags wordt BloC door Google aangeraden als een superieure State Management techniek. Het BloC pattern maakt gebruik van Streams die beschikbaar zijn in Dart, maar vaak wordt beroep gedaan op een gebruiksvriendelijkere library namelijk ReactiveX. De ReactiveX (rX) library is in Dart beschikbaar onder de naam rxDart.
 
 \subsection*{Streams}
-Om het BLoC patroon volledig te begrijpen moet een Stream eerst uitgelegd worden.
+Om het BLoC patroon volledig te begrijpen moet het concept in verband Streams uitgelegd worden.
 Een stream kan gevisualiseerd worden als een pipe met twee uiteinden, waarvan slechts
-één uiteinde gebruikt kan worden om iets in de pipe te plaatsen. Wanneer data in de pipe
+één uiteinde gebruikt kan worden om iets in de pipe te plaatsen en de andere dient als de uitgang. Wanneer data in de pipe
 geplaatst wordt, stroomt het door de pipe naar het andere uiteinde. \autocite{Boelens2018}
 
 \begin{figure}[H]
@@ -226,23 +220,23 @@ geplaatst wordt, stroomt het door de pipe naar het andere uiteinde. \autocite{Bo
     \label{fig:stream-pipeline}
 \end{figure}
 
-In Flutter kan het concept van Streams gemakkelijk gebruikt worden. De effectieve pipe wordt voorgesteld als een Stream, deze \verb|Stream| op zich maakt het niet mogelijk om deze Stream te beheren.
-Daarvoor wordt een \verb|StreamController| gebruikt. Om toegang te krijgen tot een pipe, wordt beroep gedaan op een \verb|StreamSink|, deze wordt door de \verb|StreamController| beschikbaar gesteld via de \verb|sink| property.
+In Flutter kan het concept van Streams gemakkelijk gebruikt worden. De effectieve pipe wordt voorgesteld als een Stream, dit \verb|Stream| klasse op zich maakt het niet mogelijk om deze Stream te beheren.
+Daarvoor wordt een \verb|StreamController| gebruikt. Om toegang te krijgen tot de invoer van een pipe, wordt beroep gedaan op een \verb|StreamSink|, deze wordt door de \verb|StreamController| beschikbaar gesteld via de \verb|sink| property.
 Met andere woorden heeft een pipe een toegang, namelijk de sink en een uitgang, namelijk de stream.
 
 Zowel primitieve data types als objecten en errors kunnen voorgesteld worden als een stream. Een stream heeft geen beperkingen op vlak van soorten data types.
 
-Om wijzigingen van een stream in acht te nemen kan er geluisterd worden naar een stream, dit resulteert in een \verb|StreamSubscription|. Deze \verb|StreamSubscription| is beschikbaar via de stream property van de StreamController, deze geeft meldingen wanneer er wijzigingen gebeuren in de stream, bijvoorbeeld er wordt een nieuwe waarde toegevoegd op deze stream.
+Om wijzigingen van een stream in acht te nemen kan er geluisterd worden naar een stream, dit resulteert in een \verb|StreamSubscription|. Deze \verb|StreamSubscription| is beschikbaar via de \verb|stream| property van de StreamController, deze geeft meldingen wanneer er wijzigingen gebeuren in de stream, bijvoorbeeld er wordt een nieuwe waarde toegevoegd op deze stream.
 
-Als er minstens één actieve luisteraar van een stream is, start de stream met het genereren van events dat de \verb|StreamSubscription| verwitigt op een wijziging. Deze events worden opgeroepen bij volgende scenario's: er is een error in de stream, de stream wordt afgesloten of er is nieuwe data in de stream.
+Als er minstens één actieve luisteraar van een stream is, start de stream met het genereren van events dat de \verb|StreamSubscription| verwittigt wanneer een wijziging zich voordoet. Deze events worden opgeroepen bij volgende scenario's: er is een error in de stream, de stream wordt afgesloten of er is nieuwe data in de stream.
 
 De \verb|StreamTransformer| zorgt ervoor dat de data in de stream gemanipuleerd worden, onder deze manipulaties worden volgende verstaan: filteren, hergroeperen, aanpassen, data in andere streams injecteren...
 
-Bij streams zijn er twee soorten types: single-subscription- en broadcast streams. Naar een single-subscription stream kan er slechts een luisteraar zijn tijdens de levensduur van deze stream, zelfs wanneer de subscription geannuleerd wordt. 
+Bij streams zijn er twee soorten types: single-subscription- en broadcast streams. Naar een single-subscription stream kan er slechts een luisteraar zijn tijdens de levensduur van deze stream, zelfs wanneer de subscription geannuleerd wordt. Indien er een tweede maal geluisterd wordt naar een single-subscription stream wordt een gepaste error gegeven: \verb| Stream has already been listened to|.
 
 Op een broadcast stream kunnen er meerdere luisteraars zijn. Het is mogelijk om op elk moment een luisteraar aan een broadcast stream toe te voegen. De nieuwe luisteraar ontvangt de gebeurtenissen vanaf het moment dat deze naar de stream begint te luisteren.
 
-De implementatie van Streams in Flutter worden standaard meegeleverd. Om een stream te visualiseren in een widget kan een StreamBuilder gebruikt worden. Deze StreamBuilder is in feite niet meer dan een StatefulWidget die opgebouwd wordt wanneer er een nieuwe data in een stream is.
+De implementatie van Streams in Flutter worden standaard meegeleverd in de Software Development Kit (SDK). Om een stream te visualiseren in een widget kan een StreamBuilder gebruikt worden. Deze StreamBuilder is in feite niet meer dan een StatefulWidget die opnieuw wordt opgebouwd wanneer er nieuwe data in de stream is.
 Een voorbeeld van zo'n StreamBuilder:
 \begin{minted}{dart}
 StreamBuilder<Counter>(
@@ -256,19 +250,32 @@ StreamBuilder<Counter>(
     },
 )
 \end{minted}
-De initiële data wordt ingesteld op 0 wanneer de \verb|counterStream| nog geen data bevat, de \verb|builder| functie zorgt ervoor dat de StreamBuilder weet welk widget opgebouwd moet worden wanneer een stream nieuwe data bevat.
+De initiële data wordt ingesteld op 0 wanneer de \verb|counterStream| nog geen data bevat, de \verb|builder| functie zorgt ervoor dat de StreamBuilder weet welk widget opgebouwd moet worden wanneer de \verb|StreamBuilder| nieuwe data ontvangt via de \verb|stream| property.
 
 In volgende sectie wordt het rxDart package besproken, deze package breidt de functionaliteit van de originele Dart Streams uit om te voldoen aan de ReactiveX standaarden.
 
 \subsection*{ReactiveX in Dart}
-Wanneer het concept van Streams bovengehaald wordt bij developers wordt ReactiveX automatisch gelinkt. De ReactiveX library is een library die de functionaliteiten van streams in een prorgrameertaal uitbreidt. Zo is ReactiveX beschikbaar in JavaScript onder de naam RxJS, maar belangrijker in Dart de RxDart library.
+De ReactiveX library is een library die de functionaliteiten van streams in een programmeertaal uitbreidt. Zo is ReactiveX beschikbaar in JavaScript onder de naam RxJS, maar relevanter voor dit onderzoek, in Dart: de RxDart library.
 
-Zoals reeds vermeld is de RxDart package een implementatie van de ReactiveX API in Dart. Zowel Dart Streams als RxDart worden gebruikt om streams te maken en beheren, maar beide verschillende ontwikkelaars gebruiken een andere terminologie.
-Een Stream in Dart wordt voorgesteld als een \verb|Observable| in RxDart. Een StreamController is een \verb|Subject| in RxDart.
+
+Zoals reeds vermeld is de RxDart package een implementatie van de ReactiveX API in Dart. Zowel Dart Streams als RxDart worden gebruikt om streams te maken en beheren, maar beide verschillende ontwikkelaars gebruiken een andere terminologie. Dit zorgt soms voor de nodige verwarring.
+Een Stream in Dart wordt voorgesteld als een \verb|Observable| in RxDart. Een StreamController is een \verb|Subject| in RxDart, zie tabel \ref{table:terminologie-rxdart-dart}.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{ll}
+        \textbf{Dart}    & \textbf{RxDart} \\ \hline
+        Stream           & Observable      \\
+        StreamController & Subject         \\
+        &                
+    \end{tabular}
+    \caption{Verschillende Stream terminologie in Dart en RxDart}
+    \label{table:terminologie-rxdart-dart}
+\end{table}
 
 RxDart is een uitbreiding op de originele Dart Streams API en biedt 3 variaties van de StreamController: 
 de PublishSubject \ref{fig:rxdart-publishsubject} is een normale broadcast StreamController, hier wordt enkel data van de stream gestuurd, nadat er naar de stream geluisterd (geabonneerd) wordt.
-Merk op dat deze variaties een Observable (RxDart) terug geven in plaats van een Stream (Dart).
+Merk op dat deze variaties een Observable terug geven in plaats van een Stream zie tabel \ref{table:terminologie-rxdart-dart}.
 
 
 \begin{figure}[H]
@@ -297,7 +304,7 @@ Als laatste variatie is er de ReplaySubject, een broadcast StreamController die 
 \end{figure}
 
 \subsection*{Het leven van het BLoC patroon}
-De toepassing van het BLoC patroon is dat alle business logica zoveel mogelijk wordt losgekoppeld van de presentatie laag. Deze business logica kan opgesplits worden in verschillende Business Logic Components (BLoCs). Enkele voorbeelden zijn: er kunnen aanpassingen gedaan worden in de business logica zonder dat de presentatielaag aangepast wordt. De business logica kan makkelijk hergebruikt worden doorheen het project, zo ook externe projecten. Het is eenvoudiger om de business logica te testen \ref{fig:bloc-pattern}.
+De toepassing van het BLoC patroon is dat alle business logica zoveel mogelijk wordt losgekoppeld van de presentatie laag. Deze business logica kan opgesplits worden in verschillende Business Logic Components (BLoCs). Enkele voordelen zijn: er kunnen aanpassingen gedaan worden in de business logica zonder dat de presentatielaag aangepast wordt. De business logica kan makkelijk hergebruikt worden doorheen het project, zo ook externe projecten. Het is eenvoudiger om de business logica te testen. Zie structuur BLoC patroon op figuur\ref{fig:bloc-pattern}.
 
 \begin{figure}[H]
     \centering
@@ -307,14 +314,14 @@ De toepassing van het BLoC patroon is dat alle business logica zoveel mogelijk w
 \end{figure}
 
 Bij het BLoC patroon zenden widgets events naar het BLoC via sinks en luisteren ze naar de streams van het BLoC.
-Dit kan beter omschreven worden als het concept dat de input van het BLoC de sink is en de output van het BLoC de stream. Een widget die luistert naar een stream wordt geüpdate wanneer er nieuwe data is, bij dit fenomeen moet de widget (presentatie) geen kennis hebben van de business logic zoals te zien op figuur \ref{fig:bloc-pattern-streams-sinks}. 
+Dit kan beter omschreven worden als het concept dat de input van het BLoC de sink is en de output van het BLoC de stream. Een widget die luistert naar een stream wordt geüpdate wanneer er nieuwe data is, bij dit fenomeen moet de widget in de presentatie geen kennis hebben van de business logic zoals te zien op figuur \ref{fig:bloc-pattern-streams-sinks}. 
 
-Het feit dat \verb|setState()| niet gebruikt wordt, maar wel StreamBuilder, wordt de hoeveelheid keren dat de widget gebouwd moet worden drastisch geruduceerd tot alleen de widgets die nodig zijn.
+Het feit dat \verb|setState()| niet gebruikt wordt, maar wel StreamBuilder, wordt de hoeveelheid keren dat de widget gebouwd moet worden drastisch geruduceerd tot alleen het herbouwen van de widgets die nodig zijn.
 Vanuit prestatieperspectief is dit een enorme verbetering.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{img/stand-van-zaken/bloc-pattern-streams-sinks.png}
+    \includegraphics[width=\figureWidthModifier\linewidth]{img/stand-van-zaken/bloc-pattern-streams-sinks.png}
     \caption{Streams en Sinks tussen de presentatie en business logica \autocite{Perutovic2018}}
     \label{fig:bloc-pattern-streams-sinks}
 \end{figure}
@@ -327,13 +334,74 @@ De laatste en ook meest voorkomende manier is om de BLoC mee te geven aan een vo
 \subsection*{Principes}
 Redux is een gekende library voor het beheren van state. De library is vooral gekend voor JavaScript ontwikkelaars, dat vaak gebruikt wordt in Angular of React applicaties. Echter is de library ook bruikbaar voor Flutter applicaties, aangezien de concepten dezelfde zijn. De package is beschikbaar op pub.dev onder de naam \verb|flutter_redux|.
 
-Redux bestaat uit een paar verschillende principes: er wordt gebruik gemaakt van een unidirectionele data flow. Een store, vergelijkbaar met de orkestrator in een koor. De store houdt maar één state bij en heeft maar één aanspreekpunt, namelijk \verb|dispatch|. Deze \verb|dispatch| accepteert alleen maar \verb|actions| als argument.
+Redux bestaat uit een paar verschillende principes: er wordt gebruik gemaakt van een unidirectionele data flow. De store houdt maar één state bij en heeft maar één aanspreekpunt, namelijk via \verb|dispatch|. Deze \verb|dispatch| accepteert alleen maar \verb|actions| als argument.
 
 Actions beschrijven alleen maar wat er gebeurd is, voor de rest wordt de functionaliteit afgehandeld door de Reducer, die de state kan aanpassen.
 
 Een Reducer is een synchrone functie die enige verwerking uitvoert op basis van de combinatie action - state. De uitkomst van de verwerking kan leiden tot een nieuwe state in de Store, de Reducer geeft een nieuw state object. De Reducer is de enige die de state mag veranderen. Op deze manier zit de business logica alleen verwerkt in de Reducer. 
 
+Een Middleware is een functie meestal gericht op het uitvoeren asyncrone taken gebasseerd op een Action. Een Middleware maakt gebruik van State maar wijzigt deze niet. Een voorbeeld van een Middleware kan een logger functie zijn. Een ontwikkelaar kan ervoor zorgen dat elke action gelogd wordt, dit kan met behulp van een Middleware.
+
 Volgens de officiële documentatie van Redux is het een good practice om per applicatie slechts een enkele Store te hebben. Indien er toch gewenst is om de data handling te scheiden wordt aangeraden om \verb|reducer composition| toe te passen in plaats van meerdere stores te maken.
+
+\subsection{Werking}
+Over het algemeen is de werking van Redux samen te vatten zoals op de figuur \ref{fig:redux-working}. Een applicatie bevat state, deze state wordt aan een gebruiker getoond in de presentatielaag. Wanneer de presentatielaag een wijziging kan teweeg brengen, bijvoorbeeld door een knop met een achterliggende knop, wordt een Action opgeroepen. De Action wordt ontvangen door een Reducer, deze reducer werkt de Store bij waar de State van de applicatie wordt bijgehouden. Merk op dat deze Action door een Middleware kan passeren vooraleer deze wordt afgehandeld door een Reducer.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{img/stand-van-zaken/redux-working.png}
+    \caption{Werking van Redux \autocite{Tahir2018}}
+    \label{fig:redux-working}
+\end{figure}
+
+Aangezien de manier in Redux toch een andere gang van zaken heeft wordt een situatie geschets waarbij elke stap uitvoerig wordt besproken.
+Stel een applicatie toont een pagina met één knop, de applicatie bevindt zich in een initiële state. Dit wordt voorgesteld in figuur \ref{fig:redux-working-detailed-1}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\figureWidthModifier\linewidth]{img/stand-van-zaken/redux-working-detailed-1.png}
+    \caption{Initiële situatie in een Redux State Management benadering}
+    \label{fig:redux-working-detailed-1}
+\end{figure}
+
+Er wordt op de knop geklikt, er wordt een Action gemaakt en uitgezonden naar de Store, dit is te zien op figuur \ref{fig:redux-working-detailed-2}. Dit uitzenden gebeurt via de \verb|store.dispatch(action)|. Indien er Middleware geconfigureerd is, wordt de Middleware sequentieel opgeroepen, waarbij de Action en een referentie naar de Store. Merk op dat tijdens de verwerking van deze Middleware een nieuwe Action kan verzonden worden naar de Store.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\figureWidthModifier\linewidth]{img/stand-van-zaken/redux-working-detailed-2.png}
+    \caption{een Action wordt gemaakt en verzonden naar de Store}
+    \label{fig:redux-working-detailed-2}
+\end{figure}
+
+Als volgt worden de Action en State doorgestuurd naar de Reducer, dit is te zien op figuur \ref{fig:redux-working-detailed-3}. De Reducer zal zoals reeds gezegd de State aanpassen, enkel en alleen de Reducer heeft de mogelijkheid om de State te muteren. 
+De Store zorgt ervoor dat alle luisteraars worden geïnformeerd wanneer de State is aangepast. De view zal op zijn beurt worden aangepast op basis van de nieuwe State, zie figuur \ref{fig:redux-working-detailed-4}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\figureWidthModifier\linewidth]{img/stand-van-zaken/redux-working-detailed-3.png}
+    \caption{De Action en State worden doorgestuurd de Reducer}
+    \label{fig:redux-working-detailed-3}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\figureWidthModifier\linewidth]{img/stand-van-zaken/redux-working-detailed-4.png}
+    \caption{De view wordt aangepast op basis van de nieuwe State}
+    \label{fig:redux-working-detailed-4}
+\end{figure}
+
+In het \verb|flutter_redux| package zijn handige widgets beschikbaar. Zo zorgt de \verb|StoreProvider| widget ervoor dat de Redux Store wordt doorgegeven aan alle onderliggen widgets in de widget tree. De \verb|StoreBuilder| haalt de Store uit de \verb|StoreProvider| en geeft het door aan een widget builder function. Het nadeel bij de \verb|StoreBuilder| is dat de widget in de build functie telkens zal worden opnieuw opgebouwd wanneer de State wijzigt, dit kan leiden tot onnodige rerender, de \verb|StoreConnector| biedt hiervoor de oplossing. De \verb|StoreConnector| haalt de Store uit de dichtstbijzijnde StoreProvider voorouder en zet de Store om in een ViewModel. Dit ViewModel zal alleen de waarde bevatten dat van belang is voor desbetreffende widget. Zo wordt een widget niet onnodige opgebouwd wanneer de Store wijzigt, maar alleen wanneer de waarde gespecifieerd in de ViewModel wijzigt. Bijvoorbeeld: de Redux Store bevat een counter waarde en een willigkeurige tekst, de code voor de StoreConnecter wordt de volgende: 
+
+\begin{minted}{dart}
+new StoreConnector<int, CounterViewModel>(
+    converter: (store) => CounterViewModel.from(store),
+    builder: (context, counterViewModel) {
+        return Text(counterViewModel.value);
+    },
+);
+\end{minted}
+Hier zal de Text widget alleen heropgebouwd worden wanneer de waardes die relevant zijn voor het CounterViewModel wijzigen.
+
 
 \subsection{MobX}
 \subsection*{Principes}
