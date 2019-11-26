@@ -24,7 +24,7 @@ In vorig hoodstuk werd Flutter kort geïntroduceerd als een veelomvattend cross-
 \subsection{Populariteit van Flutter}
 Flutter is een UI toolkit van Google voor het bouwen van native gecompileerde applicaties voor mobile, web en desktop vanuit één enkele codebase. Doordat Flutter meerdere platformen kan bereiken met slechts één codebase kreeg het heel wat interesse. 
 
-Flutter kenmerkt zich vooral door de snelle ontwikkelingsomgeving. Mede dankzij de Stateful Hot Reload en de reeds tal van beschikbare widgets, de bouwstenen van een Flutter applicatie. Stateful Hot Reload zorgt ervoor dat de nieuwe broncode geïnjecteerd wordt in de Dart Virtual Machine (VM), waardoor de Flutter applicatie zich automatisch herbouwt, dit zorgt ervoor dat wijzigingen direct zichtbaar zijn in de applicatie tijdens de ontwikkelingsfase. Het Flutter framework voorziet tal van widgets zodat de ontwikkelaar niet alles zelf hoeft te schrijven. De documentatie van deze widgets zijn te vinden op de site van Flutter \textcite{Flutter2019}. Dit weerhoudt de ontwikkelaar niet om deze widgets naar zijn of haar behoefte aan te passen.
+Flutter kenmerkt zich vooral door de snelle ontwikkelingsomgeving. Mede dankzij de Stateful Hot Reload en de reeds tal van beschikbare widgets, de bouwstenen van een Flutter applicatie. Stateful Hot Reload zorgt ervoor dat de nieuwe broncode geïnjecteerd wordt in de Dart Virtual Machine (VM), waardoor de Flutter applicatie zich automatisch herbouwt, dit zorgt ervoor dat wijzigingen direct zichtbaar zijn in de applicatie tijdens de ontwikkelingsfase. Het Flutter framework voorziet tal van widgets zodat de ontwikkelaar niet alles zelf hoeft te schrijven. De documentatie van deze widgets zijn te vinden op de site van Flutter \autocite{Flutter2019}. Dit weerhoudt de ontwikkelaar niet om deze widgets naar zijn of haar behoefte aan te passen.
 
 Een tweede kenmerk van Flutter is dat de eindapplicaties beschikken over native performances. Flutter compileert de broncode naar native ARM-machinecode en x86 code door gebruik te maken van de Dart Native Compilers \autocite{Dart2019}.
 
@@ -56,7 +56,7 @@ Andere cross-platform frameworks zoals React Native, maken gebruik van een verta
 \begin{figure}[H]
     \centering
     \includegraphics[width=\figureWidthModifier\linewidth]{img/stand-van-zaken/react-native-app-architecture.png}
-    \caption{De architectuur van een React Native applicatie \textcite{Leler2017}}
+    \caption{De architectuur van een React Native applicatie \autocite{Leler2017}}
     \label{fig:react-native-app-architecture}
 \end{figure}
 
@@ -73,7 +73,7 @@ Met Flutter Web is het Flutter framework opnieuw een stap dichter naar een volle
 Deze structuur wordt weergegeven in figuur \ref{fig:flutter-web-architecture}
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/stand-van-zaken/flutter-web-architecture.png}
-    \caption{De architectuur van Flutter Web \textcite{Flutter2019}}
+    \caption{De architectuur van Flutter Web \autocite{Flutter2019}}
     \label{fig:flutter-web-architecture}
 \end{figure}
 
@@ -94,7 +94,7 @@ In deze sectie wordt het concept state en de bijhorende State Management uitvoer
 
 \subsection{State}
 \label{ch:state}
-De state van een applicatie is alles dat bijgehouden wordt in het geheugen terwijl de applicatie draait. \textcite{Coninck2019}
+De state van een applicatie is alles dat bijgehouden wordt in het geheugen terwijl de applicatie draait. \autocite{Coninck2019}
 Een simpel voorbeeld van state is het volgende: één invoerveld voor voornaam, één invoerveld voor achternaam en één knop die niet klikbaar is, de state van deze knop kan beschouwd worden als een variabele \textit{klikbaar = onwaar}. Op dit moment is de knop niet klikbaar. Indien de invoervelden een geldige invoer ontvangen, wordt de state van de knop bijgewerkt: \textit{klikaar = waar}. Dit resulteert in een klikbare knop. De state van de knop is afhankelijk van de state van de invoervelden. Dit is een relatief simpel voorbeeld, maar wanneer een applicatie groeit wordt dit een zeer complex probleem. Bijvoorbeeld wanneer een state van een bericht afhankelijk is van een factor op een andere pagina. De state zal op verschillende schermen gedeeld moeten worden.
 In de breedst mogelijke zin is de state van een applicatie alles wat in het geheugen bestaat wanneer de app wordt uitgevoerd. 
 
@@ -114,7 +114,7 @@ Een voorbeeld van dit soort state: een lijst van nieuws artikels, die respectiev
 \newline
 
 Over het algemeen is er geen duidelijke regel wanneer Ephemeral State of App State gebruikt moet worden. Dit is volledige afhankelijk van de complexiteit van de applicatie en de persoonlijke voorkeur van de ontwikkelaar.
-Wanneer een applicatie nood heeft aan de nodige complexiteit wordt er aangeraden om over te schakelen naar App State \ref{fig:ephemeral-vs-app-state-flutter}. Theoretisch is het mogelijk om een volledige applicatie te ontwikkelen met State en setState(), maar dit wordt afgeraden \textcite{Developers2019}.
+Wanneer een applicatie nood heeft aan de nodige complexiteit wordt er aangeraden om over te schakelen naar App State \ref{fig:ephemeral-vs-app-state-flutter}. Theoretisch is het mogelijk om een volledige applicatie te ontwikkelen met State en setState(), maar dit wordt afgeraden \autocite{Developers2019}.
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/stand-van-zaken/ephemeral-vs-app-state-flutter.png}
     \caption{Ephemeral- vs App state in Flutter \autocite{Developers2019}}
@@ -250,7 +250,7 @@ geplaatst wordt, stroomt het door de pipe naar het andere uiteinde. \autocite{Bo
 \begin{figure}[H]
     \centering
     \includegraphics[width=\figureWidthModifier\linewidth]{img/stand-van-zaken/stream-pipeline.png}
-    \caption{Voorbeeld van een Stream pipeline \textcite{Staltz2019}} 
+    \caption{Voorbeeld van een Stream pipeline \autocite{Staltz2019}} 
     \label{fig:stream-pipeline}
 \end{figure}
 
@@ -319,7 +319,7 @@ Een Stream in Dart wordt voorgesteld als een \verb|Observable| in RxDart. Een St
         StreamController & Subject         \\
         &                
     \end{tabular}
-    \caption{Verschillende Stream terminologie in Dart en RxDart \textcite{Boelens2018}}
+    \caption{Verschillende Stream terminologie in Dart en RxDart \autocite{Boelens2018}}
     \label{table:terminologie-rxdart-dart}
 \end{table}
 
@@ -402,7 +402,7 @@ Een Middleware is een functie, meestal gericht op het uitvoeren van asynchrone t
 
 Redux bestaat uit een paar verschillende principes: er wordt gebruik gemaakt van een unidirectionele data flow. De store houdt maar één state bij en heeft maar één aanspreekpunt, namelijk via \verb|dispatch|. De \verb|dispatch| accepteert alleen maar \verb|actions| als argument.
 
-Volgens de officiële documentatie van Redux \textcite{Redux2019} is het een good practice om per applicatie slechts een enkele Store te hebben. Indien het toch gewenst is om de data handling te scheiden wordt aangeraden om \verb|reducer composition| toe te passen in plaats van meerdere stores te maken.
+Volgens de officiële documentatie van Redux \autocite{Redux2019} is het een good practice om per applicatie slechts een enkele Store te hebben. Indien het toch gewenst is om de data handling te scheiden wordt aangeraden om \verb|reducer composition| toe te passen in plaats van meerdere stores te maken.
 
 \subsection{Werking}
 Over het algemeen is de werking van Redux samen te vatten zoals op de figuur \ref{fig:redux-working}. Een applicatie bevat state. Deze state wordt aan een gebruiker getoond in de presentatielaag. Wanneer de presentatielaag een wijziging teweeg brengt, bijvoorbeeld door een klik op een knop, wordt een Action opgeroepen. De Action wordt ontvangen door een Reducer. Deze reducer werkt de Store bij waar de State van de applicatie wordt bijgehouden. Merk op dat deze Action door een Middleware kan passeren vooraleer deze wordt afgehandeld door een Reducer.
@@ -420,7 +420,7 @@ Stel een applicatie toont een pagina met één knop. De applicatie bevindt zich 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\figureWidthModifier\linewidth]{img/stand-van-zaken/redux-working-detailed-1.png}
-    \caption{Initiële situatie in een Redux State Management benadering \textcite{Boelens2019}}
+    \caption{Initiële situatie in een Redux State Management benadering \autocite{Boelens2019}}
     \label{fig:redux-working-detailed-1}
 \end{figure}
 
@@ -429,7 +429,7 @@ Wanneer op een knop wordt geklikt, wordt een Action aangemaakt en uitgezonden na
 \begin{figure}[H]
     \centering
     \includegraphics[width=\figureWidthModifier\linewidth]{img/stand-van-zaken/redux-working-detailed-2.png}
-    \caption{een Action wordt gemaakt en verzonden naar de Store \textcite{Boelens2019}}
+    \caption{een Action wordt gemaakt en verzonden naar de Store \autocite{Boelens2019}}
     \label{fig:redux-working-detailed-2}
 \end{figure}
 
@@ -439,14 +439,14 @@ De Store zorgt ervoor dat alle luisteraars worden geïnformeerd wanneer de State
 \begin{figure}[H]
     \centering
     \includegraphics[width=\figureWidthModifier\linewidth]{img/stand-van-zaken/redux-working-detailed-3.png}
-    \caption{De Action en de State worden doorgestuurd de Reducer \textcite{Boelens2019}}
+    \caption{De Action en de State worden doorgestuurd de Reducer \autocite{Boelens2019}}
     \label{fig:redux-working-detailed-3}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\figureWidthModifier\linewidth]{img/stand-van-zaken/redux-working-detailed-4.png}
-    \caption{De view wordt aangepast op basis van de nieuwe State \textcite{Boelens2019}}
+    \caption{De view wordt aangepast op basis van de nieuwe State \autocite{Boelens2019}}
     \label{fig:redux-working-detailed-4}
 \end{figure}
 

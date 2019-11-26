@@ -52,7 +52,7 @@ framework een Android en iOS applicatie te maken. Het maken van de Flutter appli
 beide native applicaties te maken (42 uren en 14 minuten).},
 }
 
-@Online{,
+@Online{Flutter2019a,
   author = {Flutter},
   title  = {Pragmatic State Management in Flutter (Google I/O'19)},
   year   = {2019},
@@ -175,6 +175,7 @@ beide native applicaties te maken (42 uren en 14 minuten).},
 
 @WWW{Redux2019,
   author = {Redux},
+  title  = {Redux},
   year   = {2019},
   url    = {https://redux.js.org/},
 }
