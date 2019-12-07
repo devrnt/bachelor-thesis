@@ -129,14 +129,14 @@ de business logica, waardoor deze logica makkelijker getest kan worden.
 In volgende sectie worden de verschillende benaderingen van State Management in Flutter besproken.
 De verschillende benaderingen die besproken worden zijn: 
 \begin{itemize}
-    \item Scoped Model
+    \item ScopedModel
     \item Provider
     \item BLoC met RxDart
     \item Redux
     \item MobX
 \end{itemize}
 
-\subsection{Scoped Model}
+\subsection{ScopedModel}
 Wanneer er nood is aan een relatief simpele benadering van State Management in een Flutter applicatie is ScopedModel een geschikte kandidaat \autocite{Boelens2019}. ScopedModel geeft een Model door naar onderliggende widgets, \textit{van vader naar kinderen}. ScopedModel is opgebouwd rond drie belangrijke concepten, een Model, een ScopedModel en een ScopedModelDescendant die te zien zijn op figuur \ref{fig:scopedmodel}. 
 
 \begin{figure}[H]
