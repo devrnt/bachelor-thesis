@@ -26,7 +26,7 @@ De layout van de mobiele applicatie is gebasseerd op mock-ups, zie figuren \ref{
     \label{fig:mock-ups-store-it}
 \end{figure}
 
-\subsection*{Schermen}
+\subsubsection{Schermen}
 De Store It applicatie bestaat uit vier schermen: 
 \begin{itemize}
     \item De ``start'' pagina met een lijst van de producten
@@ -55,10 +55,10 @@ De broncode is beschikbaar op \url{https://github.com/devrnt/bachelor-thesis-sto
 \label{ch:loc}
 Om een benaderend meetniveau te verkrijgen voor de complexiteit van een State Management worden de aantal lijnen code geteld. Dit resultaat zal een beeld scheppen op de hoeveelheid code die geschreven moet worden om een benadering van State Management uit te schrijven. Merk op dat de complexiteit van een benadering verschillend is van ontwikkelaar tot ontwikkelaar, dit is en blijft een subjectief meetniveau. Uit dit resultaat wordt besloten hoe vlot een benadering van State Management geschreven kan worden. Dit kan leiden tot bijvoorbeeld volgende conclusie: Flutter beginners zullen de voorkeur geven aan benaderingen die vlugger zijn uit te schrijven. 
 
-De aantal lijnen code van de Dart bestanden worden geteld. De Dart bestanden worden gekenmerkt door de \verb|.dart| extensie. Hiervoor wordt per verschillende benadering het volgende commando gebruikt: \verb=find . -name '*.dart' \| xargs wc -l=. Dit commando geeft het totaal aantal lijnen code terug, dit zal per verschillende benadering uitgevoerd worden. \newline 
+De aantal lijnen code van de Dart bestanden worden geteld. De Dart bestanden worden gekenmerkt door de \verb|.dart| extensie. Hiervoor wordt per verschillende benadering het volgende commando gebruikt: \verb=find ./lib/ -name '*.dart' \| xargs wc -l=. Dit commando geeft het totaal aantal lijnen code terug, dit zal per verschillende benadering uitgevoerd worden. \newline 
 Tijdens het schrijven van de benaderingen wordt er rekening gehouden met volgende afspraken: commentaar in de code wordt, voor het commando wordt uitgevoerd, verwijderd. Er wordt enkel gebruik gemaakt van een backspace (nieuwe lijn) voor de scheiding van de verschillende methodes. Deze afspraken worden strict nagestreefd doorheen de verschillende benaderingen. \newline
 \newline
-Vooraleer de aantal lijnen code worden geteld, wordt de broncode van de verschillende benaderingen geformateerd. In dit experiment wordt de \verb|dart_style| package gebruikt als formatter. Deze formatter hanteert de richtlijnen van de Dart style guide \autocite{Dart2019a}. De \verb|line-length| wordt ingesteld op negentig. Dit houdt in, dat lijnen die langer zijn dan 90 karakters, gebroken worden en op een nieuwe lijn verder lopen.
+Vooraleer de aantal lijnen code worden geteld, wordt de broncode van de verschillende benaderingen geformateerd. In dit experiment wordt de \verb|dart_style| package gebruikt als formatter. Deze formatter hanteert de richtlijnen van de Dart style guide \autocite{Dart2019a}. De \verb|line-length| wordt ingesteld op 90. Dit houdt in, dat lijnen die langer zijn dan 90 karakters, gebroken worden en op een nieuwe lijn verder lopen. Om de code te formatteren wordt volgend commando uitgevoerd: \verb|flutter format -l 90 ./lib/|.
 
 
 \section{Prestaties}

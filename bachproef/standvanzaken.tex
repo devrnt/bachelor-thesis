@@ -163,7 +163,7 @@ Hier wordt geluisterd naar een wijziging in een \verb|CounterModel|. Wanneer dez
 Indien nood is aan meerdere modellen, kunnen de ScopedModelDescendant widgets genest worden of opnieuw via de static methode \verb|ScopedModel.of| opgeroepen worden.
 
 \subsection{Provider}
-\subsection*{Principes}
+\subsubsection{Principes}
 Een nieuwkomer in het Flutter framework wordt aangeraden om de Provider package te hanteren. Provider zorgt voor een snelle benadering van State Management zonder al te veel complexiteit. Provider biedt een oplossing voor State Management en Dependency Injection.
 De Provider package maakt het mogelijk om data beschikbaar te maken voor widgets die het nodig hebben. Op voorwaarde dat de Provider widget als voorouder wordt geplaatst in de widget tree.
 
@@ -183,7 +183,7 @@ Bijvoorbeeld in de Container die wordt meegegeven aan het \verb|child| property.
 
 De functie \verb|Provider.of<T>(context, listen: false)| heeft zoals gegeven een \verb|listen| optie. Als \verb|false| wordt meegegeven wordt de widget niet herbouwd bij een wijziging. Bij sommige omstandigheden kan dit van toepassing zijn zodat onnodige rebuilds vermeden worden. Aangezien de Provider widget de totale controle heeft over het moment waarop de waarde wordt opgevraagd is er een zekerheid dat de waarde niet tweemaal wordt opgevraagd. Met andere woorden de waarde wordt niet tweemaal geïnstantieerd.
 
-\subsection*{Werking}
+\subsubsection{Werking}
 De werking van de Provider package beperkt zich niet alleen tot het voorzien (provide) van een waarde, maar heeft zoals eerder vermeld, ook een meldfunctionaliteit (notify).
 In de documentatie van de package zijn tal van Provider variaties beschikbaar: \verb|ListenableProvider|, \verb|ChangeNotifierProvider|, \verb|ChangeNotifierProxyProvider|, \verb|ValueListenableProvider|, \verb|StreamProvider| en \verb|FutureProvider|. Als laatste is, zoals reeds vermeld, een \verb|Consumer| widget beschikbaar.
 De \verb|ListenableProvider| is een specifieke implementatie voor het \verb|Listenable| object. De \verb|ListenableProvider| luistert naar data en vraagt aan de afhankelijke widgets om opnieuw te renderen wanneer de listener wordt opgeroepen. In de praktijk wordt de \verb|ListenableProvider| niet direct gebruikt, maar wel indirect. De \verb|ChangeNotifierProvider| is een specificatie van de \verb|ListenableProvider| voor \verb|ChangeNotifier|; Hier wordt de \verb|ChangeNotfier.dispose| automatisch opgeroepen wanneer nodig.
@@ -236,12 +236,12 @@ De tweede manier is om gebruik te maken van de \verb|Consumer| widget. Deze widg
 De \verb|Provider| package is gelijkaardig aan de \verb|ScopedModel| benadering. Waar \verb|Provider| een volledige oplossing biedt voor dependency injection, probeert \verb|ScopedModel| zich op te stellen als een architecturale oplossing.
 
 \subsection{BLoC met RxDart}
-\subsection*{Business Logic Component}
+\subsubsection{Business Logic Component}
 Het BLoC patroon dat staat als afkorting voor Business Logic Component. Het BLoC werd oorspronkelijk aangeboden als oplossing voor het delen van dezelfde business logica tussen Flutter en AngularDart. AngularDart is een open-source project gebouwd bovenop het Dart Web Platform, het wordt veelal gebruikt voor het ontwikkelen van web applicaties in Dart. Hedendaags wordt BLoC door Google aangeraden als een superieure State Management techniek. Het BLoC pattern maakt gebruik van Streams die beschikbaar zijn in Dart, maar vaak wordt beroep gedaan op een gebruiksvriendelijkere library namelijk ReactiveX, zie \ref{ch:reactivex}. De ReactiveX library is een laag bovenop de Streams.
 \newline
 De ReactiveX (rX) library is in Dart beschikbaar onder de naam RxDart.
 
-\subsection*{Streams}
+\subsubsection{Streams}
 Om het BLoC patroon volledig te begrijpen moet het concept Streams uitgelegd worden.
 Een stream kan gevisualiseerd worden als een pipe met twee uiteinden, waarvan slechts
 één uiteinde gebruikt kan worden om iets in de pipe te plaatsen en het andere dient als de uitgang. Wanneer data in de pipe
@@ -303,7 +303,7 @@ De initiële data wordt ingesteld op 0 wanneer de \verb|counterStream| nog geen 
 
 In volgende sectie wordt het rxDart package besproken, deze package breidt de functionaliteit van de originele Dart Streams uit om te voldoen aan de ReactiveX standaarden.
 
-\subsection*{ReactiveX in Dart}
+\subsubsection{ReactiveX in Dart}
 \label{ch:reactivex}
 De ReactiveX library is een library die de functionaliteiten van streams in een programmeertaal uitbreidt. Zo is ReactiveX beschikbaar in JavaScript onder de naam RxJS, maar relevanter voor dit onderzoek, in Dart: de RxDart library.
 
@@ -319,7 +319,7 @@ Een Stream in Dart wordt voorgesteld als een \verb|Observable| in RxDart. Een St
         StreamController & Subject         \\
         &                
     \end{tabular}
-    \caption{Verschillende Stream terminologie in Dart en RxDart \autocite{Boelens2018}}
+    \caption{Verschillende stream terminologie in Dart en RxDart \autocite{Boelens2018}}
     \label{table:terminologie-rxdart-dart}
 \end{table}
 
@@ -354,7 +354,7 @@ Als derde variatie is er de ReplaySubject. Dit is een broadcast StreamController
     \label{fig:rxdart-replaysubject}
 \end{figure}
 
-\subsection*{Het leven van het BLoC patroon}
+\subsubsection{Het leven van het BLoC patroon}
 De toepassing van het BLoC patroon is dat alle business logica zoveel mogelijk wordt losgekoppeld van de presentatie laag. Deze business logica kan opgesplitst worden in verschillende Business Logic Components (BLoCs). 
 \newline
 Enkele voordelen zijn: 
@@ -390,7 +390,7 @@ De laatste en ook meest voorkomende manier is om de BLoC mee te geven aan een vo
 
 \subsection{Redux}
 \label{ch:redux}
-\subsection*{Principes}
+\subsubsection{Principes}
 Redux is een gekende library voor het beheren van state. De library is vooral gekend bij JavaScript ontwikkelaars en wordt vaak gebruikd in Angular of React applicaties. Angular en React zijn beiden JavaScript frameworks voor het ontwikkelen van web applicaties. Echter is de library ook bruikbaar voor Flutter applicaties, aangezien de concepten dezelfde zijn. De package is beschikbaar in de package manager van Dart (pub.dev) onder de naam \verb|flutter_redux|.
 
 Een toelichting over een paar begrippen die voorkomen in Redux.
@@ -465,7 +465,7 @@ Hier zal de Text widget alleen heropgebouwd worden wanneer de waardes die releva
 
 \subsection{MobX}
 \label{ch:mobx}
-\subsection*{Principes}
+\subsubsection{Principes}
 MobX is opnieuw een library die bekend is bij ontwikkelaars. MobX is beschikbaar in Flutter via de package \verb|mobx| op pub.dev. MobX is een state management bibliotheek om de gegevens van de applicatie op een simpele manier te verbinden met de UI. Deze verbinding gebeurt volledig automatisch. De ontwikkelaar focust zich enkel op de data die in de UI getoond moet worden zonder zich zorgen te maken over het feit dat deze in sync moeten staan.
 
 MobX maakt gebruikt van drie belangrijke concepten: \textbf{Observables}, \textbf{Actions} en \textbf{Reactions}.
