@@ -109,9 +109,9 @@ De test suite bevat de volgende stappen die chronologisch worden uitgevoerd:
 
 % TODO: aanvullen met een video hoe deze stappen eruit zien?
 
-Tijdens het doorlopen van de stappen wordt data gecapteerd. Deze data wordt in Flutter beschouwd als een \verb|Timeline| object. Het \verb|Timeline| object bevat de ruwe uitvoer van de uitgevoerde stappen. Dit JSON-bestand kan bekeken worden in Google Chrome via \verb|chrome://tracing| en resulteert in een visuele voorstelling van de data, te zien op figuur \ref{fig:chrome-tracing-timeline}. Deze uitvoer bevat tal van gemeten waarden. Het CPU-gebruik is voor dit onderzoek de belangrijkste, gemeten data. \newline
+Tijdens het doorlopen van de stappen wordt data gecapteerd. Deze data wordt in Flutter beschouwd als een \verb|Timeline| object. Het \verb|Timeline| object bevat de ruwe uitvoer van de uitgevoerde stappen. Dit JSON-bestand kan bekeken worden in Google Chrome via \verb|chrome://tracing| en resulteert in een visuele voorstelling van de data, te zien op figuur \ref{fig:chrome-tracing-timeline}. Deze uitvoer bevat tal van gemeten waarden. Het CPU-gebruik is samen met de overgeslagen frames voor dit onderzoek de belangrijkste, gemeten data. \newline
 
-De stappen worden per benadering doorlopen. Deze procedure zal voor elke benadering 30 keer uitgevoerd worden. Dit zorgt voor voldoende resultaten om te analyseren. Zo wordt ook, de kans dat een conclusie wordt gebasseerd op toevallige meetresulaten, verkleind.
+De stappen worden per benadering doorlopen. Deze procedure zal voor elke benadering 50 keer uitgevoerd worden. Dit zorgt voor voldoende resultaten om te analyseren. Zo wordt ook, de kans dat een conclusie wordt gebasseerd op toevallige meetresulaten, verkleind.
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/methodologie/chrome-tracing-timeline.jpg}
