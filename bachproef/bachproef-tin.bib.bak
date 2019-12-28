@@ -15,18 +15,18 @@
   address = {Gent}
 }
 
-@article{Creeger2009,
-  author = {Creeger, Mache},
+@Article{Creeger2009,
+  author  = {Creeger, Mache},
+  title   = {CTO Roundtable: Cloud Computing},
   journal = {Communications of the ACM},
-  number = {8},
-  pages = {50--56},
-  title = {{CTO Roundtable: Cloud Computing}},
-  volume = {52},
-  year = {2009}
+  year    = {2009},
+  volume  = {52},
+  number  = {8},
+  pages   = {50--56},
 }
 
-@Thesis{Coninck2019,
-  author      = {Bram De Coninck},
+@Thesis{DeConinck2019,
+  author      = {De Coninck, Bram},
   title       = {De verhouding tussen Flutter enerzijds en Native Android, Native iOS, React Native en Xamarin anderzijds: een in-depth studie},
   type        = {Bachelor's Thesis},
   institution = {HoGent},
@@ -67,7 +67,7 @@ beide native applicaties te maken (42 uren en 14 minuten).},
 }
 
 @Thesis{Kuitunen2019,
-  author      = {Mika Kuitunen},
+  author      = {Kuitunen, Mika},
   title       = {Cross-platform mobile application development with React Native},
   type        = {Bachelor Thesis},
   institution = {Tampere University},
@@ -75,14 +75,14 @@ beide native applicaties te maken (42 uren en 14 minuten).},
 }
 
 @Online{Leler2017,
-  author = {Wm Leler},
+  author = {Leler, Wm},
   title  = {What's revolutionary about Flutter},
   year   = {2017},
   url    = {https://hackernoon.com/whats-revolutionary-about-flutter-946915b09514},
 }
 
 @Online{Thomsen2019,
-  author = {Michael Thomsen},
+  author = {Thomsen, Michael},
   title  = {Announcing Dart 2.5: Super-charged development},
   year   = {2019},
   date   = {2019-09-10},
@@ -90,7 +90,7 @@ beide native applicaties te maken (42 uren en 14 minuten).},
 }
 
 @Online{Leler2017a,
-  author = {Wm Leler},
+  author = {Leler, Wm},
   title  = {Why Flutter Uses Dart},
   year   = {2017},
   url    = {https://hackernoon.com/why-flutter-uses-dart-dd635a054ebf},
@@ -104,28 +104,28 @@ beide native applicaties te maken (42 uren en 14 minuten).},
 }
 
 @WWW{Boelens2019,
-  author = {Didier Boelens},
+  author = {Boelens, Didier},
   title  = {BLoC - ScopedModel - Redux - Comparison},
   year   = {2019},
   url    = {https://www.didierboelens.com/2019/04/bloc---scopedmodel---redux---comparison/},
 }
 
 @WWW{Boelens2019a,
-  author = {Didier Boelens},
+  author = {Boelens, Didier},
   title  = {Provider - Points of interest - Points to care about},
   year   = {2019},
   url    = {https://www.didierboelens.com/2019/07/provider---points-of-interest---points-to-care-about/},
 }
 
 @WWW{Boelens2018,
-  author = {Didier Boelens},
+  author = {Boelens, Didier},
   title  = {Reactive Programming - Streams - BloC},
   year   = {2018},
   url    = {https://www.didierboelens.com/2018/08/reactive-programming---streams---bloc/},
 }
 
 @WWW{Perutovic2018,
-  author = {Marko Perutović},
+  author = {Perutović, Marko},
   title  = {How to Leverage BLoC for Code Sharing in Flutter and AngularDart},
   year   = {2018},
   url    = {https://www.toptal.com/cross-platform/code-sharing-angular-dart-flutter-bloc},
@@ -139,14 +139,14 @@ beide native applicaties te maken (42 uren en 14 minuten).},
 }
 
 @WWW{Tahir2018,
-  author = {Nish Tahir},
+  author = {Tahir, Nish},
   title  = {Lessons Learned Implementing Redux on Android},
   year   = {2018},
   url    = {https://hackernoon.com/lessons-learned-implementing-redux-on-android-cba1bed40c41},
 }
 
 @WWW{Hracek2019,
-  author = {Filip Hracek},
+  author = {Hracek, Filip},
   title  = {Performance testing of Flutter apps},
   year   = {2019},
   url    = {https://medium.com/flutter/performance-testing-of-flutter-apps-df7669bb7df7},
@@ -160,14 +160,14 @@ beide native applicaties te maken (42 uren en 14 minuten).},
 }
 
 @WWW{Staltz2019,
-  author = {André Staltz},
+  author = {Staltz, André},
   title  = {The introduction to Reactive Programming you've been missing},
   year   = {2019},
   url    = {https://gist.github.com/staltz/868e7e9bc2a7b8c1f754},
 }
 
 @Online{Chan2019,
-  author = {Rosalie Chan},
+  author = {Chan, Rosalie},
   title  = {The 10 fastest-growing programming languages, according to Microsoft-owned GitHub},
   year   = {2019},
   url    = {https://www.businessinsider.com/fastest-growing-programming-languages-github-2019-11?r=US&IR=T#1-dart-10},
@@ -201,11 +201,26 @@ beide native applicaties te maken (42 uren en 14 minuten).},
   url    = {https://dart.dev/guides/language/effective-dart/style},
 }
 
-@WWW{Vrient2019,
-  author = {Jonas De Vrient},
+@WWW{DeVrient2019,
+  author = {De Vrient, Jonas},
   title  = {Store It Source Code Github repository},
   year   = {2019},
   url    = {https://github.com/devrnt/bachelor-thesis-store-it},
+}
+
+@WWW{Flutter2019d,
+  author = {Flutter},
+  title  = {UI Performance},
+  year   = {2019},
+  url    = {https://flutter.dev/docs/perf/rendering/ui-performance},
+}
+
+@Online{DeVrient2019a,
+  author  = {De Vrient, Jonas},
+  title   = {Store It - ScopedModel GitHub repository},
+  year    = {2019},
+  url     = {https://github.com/devrnt/bachelor-thesis-store-it/tree/scopedmodel},
+  urldate = {2019-05-20},
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}
