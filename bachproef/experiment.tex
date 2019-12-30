@@ -8,22 +8,22 @@
 
 \section{Inleiding}
 % TODO: move this section to previous chapter
-In deze sectie worden de resultaten per benadering opgelijst en besproken, alsook vergeleken met elkaar. Eerst wordt de gekozen benadering kort besproken en worden interessante zaken naar bovengehaald die zich tijdens de implementatie voordeden. Daarna worden de resultaten besproken. Deze resultaten omvatten de aantal lijnen code en de prestaties. \newline \newline Onder de prestatie wordt voornamelijk gekeken naar de CPU-tijd en de overgeslagen frames. De CPU-tijd is de totaal aantal tijd dat de CPU Dart code heeft uitgevoerd. Dit is een goede benadering voor het batterijverbruik.
+In deze sectie worden de resultaten per benadering opgelijst en besproken, alsook vergeleken met elkaar. Eerst wordt de gekozen benadering kort besproken en worden interessante zaken naar bovengehaald die zich tijdens de implementatie voordeden. Daarna worden de resultaten besproken. Deze resultaten omvatten het aantal lijnen code en de prestaties. \newline \newline Bij de prestaties wordt voornamelijk gekeken naar de CPU-tijd en de overgeslagen frames. De CPU-tijd is de totale tijd dat de CPU Dart code heeft uitgevoerd. Dit is een goede benadering voor het batterijverbruik.
 
 
 \section{ScopedModel}
 De broncode is beschikbaar op GitHub. \autocite{DeVrient2019a}
 \subsection{Beschrijving}
 % gebruikte packages en hoe was het verloop
-De implementatie van de ScopedModel benadering wordt beschouwd als één van de eenvoudigere. De ScopedModel vereist geen drastische wijzigingen in de applicatie structuur. De ontwikkelaar schrijft klasse modellen en laat deze eenvoudig uitbreiden van de \verb|Model| klasse. Zo beschikt de applicatie in deze benadering over een winkel, product en voorkeuren model. \newline \newline
+De implementatie van de ScopedModel benadering wordt beschouwd als één van de eenvoudigere. ScopedModel vereist geen drastische wijzigingen in de applicatie structuur. De ontwikkelaar schrijft klasse modellen en laat deze eenvoudig uitbreiden van de \verb|Model| klasse. Zo beschikt de applicatie in deze benadering over een winkel, product en voorkeuren model. \newline \newline
 Voor deze benadering wordt enkel beroep gedaan op de \verb|scoped_model| package. 
 
 
 \subsection{Resultaten}
 \subsubsection{Aantal lijnen code}
-Deze benadering vereist geen boilerplate code dit reflecteert zich in de aantal lijnen code. Voor deze benadering zijn in totaliteit 802 lijnen code geschreven. In vergelijking met de aantal lijnen code van de boilerplate code, die 711 bedraagt, is dit geen groot verschil. 
+Deze benadering vereist geen boilerplate code en dit reflecteert zich in het aantal lijnen code. Voor deze benadering zijn in totaliteit 802 lijnen code geschreven. In vergelijking met het aantal lijnen code van de boilerplate code, die 711 bedraagt, is dit geen groot verschil. 
 
-Op basis van de aantal lijnen code wordt de ScopedModel als een toegankelijke benadering beschouwd die snel is uit te schrijven.
+Op basis van het aantal lijnen code wordt de ScopedModel als een toegankelijke benadering beschouwd die snel is uit te schrijven.
 
 \subsubsection{Prestaties}
 Onderstaande tabel \ref{table:experiment-scopedmodel-statistics} beschrijft de CPU-tijd, inclusief enkele statistieken. De CPU-tijd wordt genoteerd in milliseconden. Alle getallen worden indien nodig afgerond op twee cijfers na de komma.
@@ -44,14 +44,14 @@ Onderstaande tabel \ref{table:experiment-scopedmodel-statistics} beschrijft de C
 \end{table}
 
 % TODO: move this to previous chapter?
-Om een duidend overzicht te verkrijgen over de benadering wordt er een extra meeteenheid bekeken, namelijk de aantal overgeslagen frames. Er is sprake van een overgeslagen frame wanneer de applicatie een frame niet kan tekenen binnen een bepaalde tijdsspanne. Als gevolg dat de frame wordt overgeslagen. Dit resulteert in de UI die niet vloeiend overkomt. \autocite{Flutter2019d}.
+Om een duidend overzicht te verkrijgen over de benadering wordt er een extra meeteenheid bekeken, namelijk het aantal overgeslagen frames. Er is sprake van een overgeslagen frame wanneer de applicatie een frame niet kan tekenen binnen een bepaalde tijdsspanne. Als gevolg dat de frame wordt overgeslagen. Dit resulteert in de UI die niet vloeiend overkomt. \autocite{Flutter2019d}.
 
 Tijdens het doorlopen van de ScopedModel benadering zijn in totaal 838 frames overgeslagen. Dit komt neer op een gemiddelde van 16.76 overgeslagen frames per uitvoering.
 
 \section{Provider}
 De broncode is beschikbaar op GitHub. \autocite{DeVrient2019b}
 \subsection{Beschrijving}
-De Provider benadering is gelijkaardig aan die van ScopedModel. Zowel de architectuur van de code als de toegankelijkheid is te vergelijken met die van ScopedModel. Het enige verschil is dat de model klassen bij ScopedModel overerven van \verb|ChangeNotifier| in plaats van \verb|Model|. \newline \newline
+De Provider benadering is gelijkaardig aan die van ScopedModel. Zowel de architectuur van de code als de toegankelijkheid is te vergelijken met die van ScopedModel. Het enige verschil is dat de model klassen bij Provider overerven van \verb|ChangeNotifier| in plaats van \verb|Model|. \newline \newline
 Voor deze benadering wordt enkel beroep gedaan op de \verb|provider| package. 
 
 \subsection{Resultaten}
@@ -120,7 +120,7 @@ Voor deze benadering wordt enkel beroep gedaan op de \verb|rxdart| package.
 
 \subsection{Resultaten}
 \subsubsection{Aantal lijnen code}
-Voor deze benadering zijn in totaliteit 927 lijnen code geschreven. Vergeleken met vorige benaderingen is dit een stuk meer. In vergelijking met ScopedModel en Provider is dit om en beide 15\% meer code. Indien een applicatie een zodanige grote heeft is dit wel een gevolg om in acht te nemen. Dit reflecteert evenredig met de complexiteit. De BLoC benadering vraagt een andere manier van denken voor de ontwikkelaar. De vraag is of de ontwikkelaar de nodige tijd wil investeren om deze bendaring onder de knie te krijgen. Dit is een vraagstuk waar alleen de ontwikkelaar zelf een antwoord kan op bieden.
+Voor deze benadering zijn in totaliteit 927 lijnen code geschreven. Vergeleken met vorige benaderingen is dit een stuk meer. In vergelijking met ScopedModel en Provider is dit om en beide 15\% meer code. Indien een applicatie een zodanige grootte heeft is dit wel een gevolg om in acht te nemen. Dit reflecteert evenredig met de complexiteit. De BLoC benadering vraagt een andere manier van denken voor de ontwikkelaar. De vraag is of de ontwikkelaar de nodige tijd wil investeren om deze bendaring onder de knie te krijgen. Dit is een vraagstuk waar alleen de ontwikkelaar zelf een antwoord kan op bieden.
 
 Het valt in overweging te nemen of de ontwikkelaar een gestructureerdere aanpak wil hanteren met als neveneffect meer code. Merk op dat indien een gestructureerdere aanpak wordt gehanteerd dit kan resulteren in een gemakkelijker onderhoud in de toekomst. 
 \subsubsection{Prestaties}
@@ -157,8 +157,8 @@ Voor deze benadering wordt beroep gedaan op volgende packages:
 
 
 \subsubsection{Aantal lijnen code}
-Voor deze benadering zijn in totaliteit 1042 lijnen code geschreven. In vergelijking met ScopedModel of Provider is dit 22\% meer code. Vergeleken met de BLoC is dit afgerond 11\%. \newline
-De oorzaak van de hoeveelheid aantal lijnen code is te danken aan de herhalende code die geschreven moet worden bij Redux. Er worden actions, reducers opgesteld, deze zijn repetitief als gevolg de vele aantal lijnen code. De voorkeuren en winkel state wordt dan nog eens globaal ingewikkeld in de zogenaamde app state die gebruikt wordt doorheen de applicatie.
+Voor deze benadering zijn in totaliteit 1042 lijnen code geschreven. In vergelijking met ScopedModel of Provider is dit 22\% meer code. Vergeleken met de BLoC benadering is dit afgerond 11\% meer code. \newline
+De oorzaak van de hoeveelheid aantal lijnen code is te wijten aan de herhalende code die geschreven moet worden bij Redux. Er worden actions en reducers opgesteld, deze zijn repetitief, als gevolg de vele aantal lijnen code. De voorkeuren en winkel state worden dan nog eens globaal ingewikkeld in de zogenaamde app state die gebruikt wordt doorheen de applicatie.
 
 \subsubsection{Prestaties}
 Onderstaande tabel \ref{table:experiment-redux-statistics} beschrijft de CPU-tijd, inclusief enkele statistieken. De CPU-tijd wordt genoteerd in milliseconden. Alle getallen worden indien nodig afgerond op twee cijfers na de komma.
@@ -231,8 +231,8 @@ Onderstaande tabel \ref{table:experiment-mobx-statistics} beschrijft de CPU-tijd
 Tijdens het doorlopen van de MobX benadering zijn in totaliteit 572 frames overgeslagen. Dit komt neer op een gemiddelde van 11.40 overgeslagen frames per uitvoering.
 
 \section{Samenvatting}
-In tabel \ref{table:amount-lines-of-code} worden de aantal lijnen code per benadering opgesomd. De rij ``gecorrigeerd'' is het aantal lijnen code van de benadering min het aantal lijnen code van de boilerplate code. Het valt op dat de ScopedModel en Provider benadering met voorsprong de minst aantal lijnen code hebben. Redux heeft overduidelijk het meest aantal lijnen code, dit valt te verklaren door de hoeveelheid repetitieve code die geschreven moet worden. \newline \newline
-Indien de ontwikkelaar een keuze moet maken tussen de verschillende benaderingen op basis van de aantal lijnen code zijn ScopedModel en Provider de geschikte kandidaten. Deze zijn immers integreerbaar zonder veel extra code uit te schrijven. Ook vergen beide State Management bendaringen geen wijziging in de architectuur van de applicatie. \newline
+In tabel \ref{table:amount-lines-of-code} worden het aantal lijnen code per benadering opgesomd. De rij ``gecorrigeerd'' is het aantal lijnen code van de benadering min het aantal lijnen code van de boilerplate code. Het valt op dat de ScopedModel en Provider benadering met voorsprong het minst aantal lijnen code hebben. Redux heeft overduidelijk het meest aantal lijnen code, dit valt te verklaren door de hoeveelheid repetitieve code die geschreven moet worden. \newline \newline
+Indien de ontwikkelaar een keuze moet maken tussen de verschillende benaderingen op basis van het aantal lijnen code zijn ScopedModel en Provider de geschikte kandidaten. Deze zijn immers integreerbaar zonder veel extra code uit te schrijven. Ook vergen beide State Management bendaringen geen wijziging in de architectuur van de applicatie. \newline
 Redux is overduidelijk de verliezer op basis van het aantal lijnen code. De verschillen tussen de MobX en BLoC zijn verwaarloosbaar.
 \begin{table}[H]
     \centering
@@ -248,7 +248,7 @@ Redux is overduidelijk de verliezer op basis van het aantal lijnen code. De vers
 Onderstaande tabel \ref{table:experiment-cpu-time} beschrijft de CPU-tijd, inclusief enkele statistieken van alle benaderingen. De CPU-tijd
 wordt genoteerd in milliseconden. Alle getallen worden indien nodig afgerond op twee
 cijfers na de komma. Zie grafiek \ref{fig:graph-cpu-time} voor de visuele voorstelling van deze resultaten.\newline \newline
-Hoe minder CPU-tijd een benadering nodig heeft, hoe beter voor de prestaties. Als er gekeken wordt naar de CPU-tijd, is de het opvallend dat er voornamelijk twee groepen zijn. De eerst groep bestaat uit ScopedModel en Redux, die een langere CPU-tijd hebben. Provider, Redux en MobX hebben positievere resultaten, met als beste resultaat die van Provider, gevolgd door MobX. \newline \newline
+Hoe minder CPU-tijd een benadering nodig heeft, hoe beter voor de prestaties. Als er gekeken wordt naar de CPU-tijd, is het opvallend dat er voornamelijk twee groepen zijn. De eerst groep bestaat uit ScopedModel en Redux, die een langere CPU-tijd hebben. Provider, BLoC en MobX hebben positievere resultaten, met als beste resultaat die van Provider, gevolgd door MobX. \newline \newline
 Hoewel Provider over het beste resultaat beschikt, heeft het niet de kleinste standaardafwijking, die behoort tot de MobX benadering. Dit wil zeggen dat de resultaten bij de MobX benadering dichter bij het gemiddelde liggen dan bij BLoC. Dit kan verklaard worden door het feit dat de Provider benadering beschikt over meer uitschieters. \newline \newline 
 Dit resultaat heeft aangetoond dat de Provider benadering het sterkst scoort op CPU-tijd, gevolgd door de BLoC benadering. \newline \newline
 
@@ -290,11 +290,11 @@ Uit dit resultaat blijkt dat de ScopedModel en Redux opnieuw niet goed scoren. D
     \caption{Grafiek van de CPU-tijd van de verschillende benaderingen}
     \label{fig:graph-cpu-time}
 \end{figure}
-Dit experiment toont aan dat de Provider State Management benadering resulteert in de beste performantie voor dit experiment. Deze conlcusie is gebasseerd op de CPU-tijden en overgeslagen frames. Hieruit kan echter niet geconcludeerd worden dat Provider altijd de beste benadering zal zijn. Er worden enkele kritische bedenken opgesomd. \newline \newline
-Als eerst is de applicatie in dit experiment geen volledige voorstelling van een applicatie in de echte wereld. In de dit experiment wordt enkel rekening gehouden met state in de applicatie, zonder data op te halen van een externe backend. In deze applicatie worden de producten niet opgehaald door middel van een netwerk verzoek, er wordt enkel gebruik gemaakt van gemockte producten. Dit experiment representatief voor applicaties die enkel gebruik maakt van lokale state. Het moet verder onderzocht worden of de getrokken conclusies gelden voor een applicatie die netwerk verzoeken stuurt. \newline
+Dit experiment toont aan dat de Provider State Management benadering resulteert in de beste performantie voor dit experiment. Deze conclusie is gebaseerd op de CPU-tijden en overgeslagen frames. Hieruit kan echter niet geconcludeerd worden dat Provider altijd de beste benadering zal zijn. Er worden enkele kritische bedenken opgesomd. \newline \newline
+Als eerst is de applicatie in dit experiment geen volledige voorstelling van een applicatie in de echte wereld. In de dit experiment wordt enkel rekening gehouden met state in de applicatie, zonder data op te halen van een externe backend. In deze applicatie worden de producten niet opgehaald door middel van een netwerk verzoek, er wordt enkel gebruik gemaakt van gemockte producten. Dit experiment is representatief voor applicaties die enkel gebruik maakt van lokale state. Het moet verder onderzocht worden of de getrokken conclusies gelden voor een applicatie die netwerk verzoeken stuurt. \newline
 Het is perfect mogelijk om de netwerk verzoeken te integreren in de State Management van deze applicatie. Dit zal voor enkele benaderingen meer werk vergen dan voor andere. Zo zullen de netwerk verzoeken relatief snel geïntegreerd kunnen worden in de BLoC benadering aangezien er reeds gebruikt gemaakt wordt van asynchronous stream. \newline 
 
-Als tweede houdt dit experiment enkel rekening met de CPU-tijd en de overgeslagen frames. De data die verworven is tijdens het doorlopen van de verschillende benaderingen bevat tal van andere maatstaven. Uit deze data werd voor dit onderzoek enkel en alleen gekeken naar de CPU-tijd en de overgeslagen frames, maar het is perfect mogelijk om rekening te houden met meer maatstaven. Zo is het mogelijk om rekening te houden met de build times en de rasterzation times. Rasterisation is het concept waarbij een beeld dat bestaat uit vormen wordt omgezet naar een reeks van pixels om zo het gewenste beeld te bekomen. \newline
+Als tweede houdt dit experiment enkel rekening met de CPU-tijd en de overgeslagen frames. De data die verworven is tijdens het doorlopen van de verschillende benaderingen bevat tal van andere maatstaven. Uit deze data werd voor dit onderzoek enkel en alleen gekeken naar de CPU-tijd en de overgeslagen frames, maar het is perfect mogelijk om rekening te houden met meer maatstaven. Zo is het mogelijk om rekening te houden met de build times en de rasterization times. Rasterisation is het concept waarbij een beeld dat bestaat uit vormen wordt omgezet naar een reeks van pixels om zo het gewenste beeld te bekomen. \newline
 
 Als derde opmerking: tijdens het doorlopen van de verschillende benaderingen op het test apparaat werd dit uitgevoerd op een Android toestel. Dit testapparaat behoort heden tot de mid-range smartphones. Er zou getest kunnen worden of gelijkaardige resultaten bekomen worden bij het uitvoeren van dezelfde gebruikersflow bij andere segmenten van de smartphones. Onder andere op een smartphone met mindere specificaties alsook een met hogere specificaties. Het kan bijvoorbeeld zijn dat de Redux benadering die slecht scoort op het testapparaat van dit experiment het beter doet op een apparaat met betere specificaties. 
 
