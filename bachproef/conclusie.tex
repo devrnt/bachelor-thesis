@@ -5,7 +5,7 @@
 \chapter{Conclusie}
 \label{ch:conclusie}
 
-% TODO: Trek een duidelijke conclusie, in de vorm van een antwoord op de
+% Trek een duidelijke conclusie, in de vorm van een antwoord op de
 % onderzoeksvra(a)g(en). Wat was jouw bijdrage aan het onderzoeksdomein en
 % hoe biedt dit meerwaarde aan het vakgebied/doelgroep? 
 % Reflecteer kritisch over het resultaat. In Engelse teksten wordt deze sectie
@@ -14,5 +14,63 @@
 % Heeft het onderzoek geleid tot nieuwe vragen die uitnodigen tot verder 
 %onderzoek?
 
-\lipsum[76-80]
+\section{Antwoord op de onderzoeksvragen}
+\subsubsection{Hoeveel verschilt de geschreven code bij verschillende benaderingen van State Management, met andere woorden hoe snel ken een benadering van State Management geschreven worden.}
+De ScopedModel en Provider benadering hebben met voorsprong de minst aantal lijnen code. Redux heeft overduidelijk het meest aantal lijnen code, dit valt te verklaren door de hoeveelheid repetitieve code die geschreven moet worden. 
 
+De benaderingen die het snelst zijn uit te schrijven zijn ScopedModel en Provider. Als nieuwkomer bij het Flutter framework is het aan te raden om gebruik te maken van deze benaderingen. Deze benaderingen vereisten niet alleen weinig code, ze zijn ook instapklaar zonder veel inwerking.  
+
+De Redux benadering valt niet aan te raden voor een Flutter nieuwkomer vanwege de hoeveelheid code dat geschreven moet worden. De Redux benadering vereist ook een inwerkingsperiode. De ontwikkelaar moet eerst ingewerkt zijn in het Redux ecosysteem vooraleer deze kan gebruikt worden als oplossing voor State Management. 
+
+Hetzelfde geldt voor de MobX en BLoC benadering maar in mindere mate. Deze benaderingen vergen ook een bepaalde inwerkingsperiode, maar zijn minder complex dan Redux. De MobX en BLoC benaderingen zijn sneller uit te schrijven dan Redux benadering, maar minder snel dan de ScopedModel en Provider benadering.
+
+\subsubsection{Hoe variëren de prestaties bij de verschillende benaderingen van State Management?}
+
+Uit dit onderzoek blijk dat de Provider State Management benadering resulteert in de beste performantie. Deze conlcusie is gebasseerd op de CPU-tijden en overgeslagen frames, deze resultaten zijn terug te vinden in tabel \ref{table:experiment-cpu-time-conclusion} en in tabel \ref{table:experiment-skipped-frames-conclusion}. Hieruit kan echter niet geconcludeerd worden dat Provider altijd de beste benadering zal zijn. Er worden enkele kritische bedenken opgesomd. \newline \newline
+Als eerst is de applicatie in dit experiment geen volledige voorstelling van een applicatie in de echte wereld. In de dit experiment wordt enkel rekening gehouden met state in de applicatie, zonder data op te halen van een externe backend. In deze applicatie worden de producten niet opgehaald door middel van een netwerk verzoek, er wordt enkel gebruik gemaakt van gemockte producten. Dit experiment representatief voor applicaties die enkel gebruik maakt van lokale state. Het moet verder onderzocht worden of de getrokken conclusies gelden voor een applicatie die netwerk verzoeken stuurt. \newline
+Het is perfect mogelijk om de netwerk verzoeken te integreren in de State Management van deze applicatie. Dit zal voor enkele benaderingen meer werk vergen dan voor andere. Zo zullen de netwerk verzoeken relatief snel geïntegreerd kunnen worden in de BLoC benadering aangezien er reeds gebruikt gemaakt wordt van asynchronous stream. \newline 
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c|c|c|c|c|c}
+        & \textbf{ScopedModel} & \textbf{Provider} & \textbf{BLoC} & \textbf{Redux} & \textbf{MobX} \\ \hline
+        Minimum             & 4026.77    & 2904.56    &  3495.19   &  3727.69  &  3950.13      \\ \hline
+        Maximum             & 6595.28    & 5486.11    &  5529.18   &  6546.53  &  5655.71      \\ \hline
+        Gemiddelde          & 5838.15    & 4741.56    &  4884.95   &  5512.45  &  4849.02      \\ \hline
+        Mediaan             & 5908.59    & 4869.92    &  4946.48   &  5601.20  &  4905.71      \\ \hline
+        Standaardafwijking  & 492.11     & 485.12     &  393.12    &  625      &  358.07       \\ \hline
+        Variantie           & 242174.60  & 235343.70  &  154543    &  390629   &  128216.90    \\ \hline
+        Modus               & 6029.70    & 4576.04    &  5061.23   &  4597.65  &  4915.30      \\                
+    \end{tabular}
+    \caption{Statistieken van de CPU-tijd (in ms) van alle benaderningen}
+    \label{table:experiment-cpu-time-conclusion}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c|c|c|c|c|c}
+        & \textbf{ScopedModel} & \textbf{Provider} & \textbf{BLoC} & \textbf{Redux} & \textbf{MobX} \\ \hline
+        Totaal      &  838   &  595     &  610     &  820    &  572        \\ \hline
+        Gemiddeld   &  16.76    &  11.90   &  12.20   &  16.73  &  11.40        \\ 
+    \end{tabular}
+    \caption{Statistieken van de totaal en gemiddeld aantal overgeslagen frames van alle benaderingen}
+    \label{table:experiment-skipped-frames-conclusion}
+\end{table}
+
+Als tweede houdt dit experiment enkel rekening met de CPU-tijd en de overgeslagen frames. De data die verworven is tijdens het doorlopen van de verschillende benaderingen bevat tal van andere maatstaven. Uit deze data werd voor dit onderzoek enkel en alleen gekeken naar de CPU-tijd en de overgeslagen frames, maar het is perfect mogelijk om rekening te houden met meer maatstaven. Zo is het mogelijk om rekening te houden met de build times en de rasterzation times. Rasterisation is het concept waarbij een beeld dat bestaat uit vormen wordt omgezet naar een reeks van pixels om zo het gewenste beeld te bekomen. \newline \newline
+Als derde opmerking: tijdens het doorlopen van de verschillende benaderingen op het test apparaat werd dit uitgevoerd op een Android toestel. Dit testapparaat behoort heden tot de mid-range smartphones. Er zou getest kunnen worden of gelijkaardige resultaten bekomen worden bij het uitvoeren van dezelfde gebruikersflow bij andere segmenten van de smartphones. Onder andere op een smartphone met mindere specificaties alsook een met hogere specificaties. Het kan bijvoorbeeld zijn dat de Redux benadering die slecht scoort op het testapparaat van dit experiment het beter doet op een apparaat met betere specificaties. 
+
+Als laatste werd dit experiment de gebruikersflow enkel doorlopen op een Android toestel. Het zou interessant zijn om dezelfde gebruikersflow uit te voeren op een iOS testappraat. 
+
+Het CPU-gebruik van een applicatie is slechts één indicator om de performantie ervan aan
+te tonen. Voor een grondiger resultaat moeten er meerdere indicatoren getest worden.
+
+\section{Conclusie van deze bachelorproef}
+In het begin van dit onderzoek werd de hoofdonderzoeksvraag gegeven en die luidde als volgt: \textit{Hoeveel impact hebben verschillende benaderingen van State Management in Flutter?} Om dit te onderzoeken werd een keuze gemaakt aan bepaalde meetcriteria, aangezien impact een overkoepelende term is. Zo werd rekening gehouden met de aantal lijnen code, de CPU-tijd en de overgeslagen frames. \newline 
+
+Uit dit onderzoek blijkt dat er geen eenduidig antwoord bestaat op de hoofdonderzoeksvraag. Toch kan er vast gesteld worden dat de Provider State Management benadering uitblinkt op vlak van de aantal lijnen code als de prestaties. \newline
+De ontwikkelaar kiest nog steeds zijn/haar voorkeur voor welke benadering toe te passen, maar door dit onderzoek kunnen er extra argumenten opgelegd worden, al dan niet in een positieve zin. \newline
+
+Deze bachelorproef loopt hier zeker niet ten einde, het biedt tal van uitbreidmogelijkheden. Zo kan hetzelfde onderzoek uitgevoerd worden op een iOS apparaat en kan er rekening gehouden worden met extra meetstaven.
+
+Hopelijk biedt deze bachelorproef een meerwaarde voor de Flutter community. Tijdens het maken van deze bachelorproef zijn er vaak wijzigingen toegepast aangezien de Flutter ontwikkelaars druk bezig zijn. Zo is op heden de nieuwe Dart SDK versie 2.7 en is de stabiele versie van Flutter reeds \verb|1.12.13-hotfix.5|.

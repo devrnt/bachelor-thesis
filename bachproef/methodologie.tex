@@ -49,7 +49,7 @@ Op de voorkeurenpagina kan de gebruiker het thema aanpassen, dit gebeurt met de 
 Wanneer het thema wijzigt, wordt de gehele applicatie aangepast naar het geselecteerde thema. Aangezien de gehele applicatie moet gewijzigd worden, is dit een interessante pagina op vlak van state. Namelijk elk widget in de widget tree moet opnieuw gebouwd worden om de wijzigingen ``at runtime'' toe te passen.
 
 
-De broncode is beschikbaar op \url{https://github.com/devrnt/bachelor-thesis-store-it}\autocite{Vrient2019}. De \verb|master| tak bevat de boilerplate code. De verschillende benaderingen zijn onderveeld per tak. Zo bevat de \verb|mobx| tak de MobX State Management benadering.
+De broncode is beschikbaar op \url{https://github.com/devrnt/bachelor-thesis-store-it}\autocite{DeVrient2019}. De \verb|master| tak bevat de boilerplate code. De verschillende benaderingen zijn onderveeld per tak. Zo bevat de \verb|mobx| tak de MobX State Management benadering.
 
 \section{Aantal lijnen code}
 \label{ch:loc}
@@ -66,7 +66,7 @@ Vooraleer de aantal lijnen code worden geteld, wordt de broncode van de verschil
 \subsection{Integratietesten}
 Flutter beschikt over de nodige tools voor het uitvoeren van integratie testen. Deze testen schrijven de gebruikersflow uit, waardoor individuele modules als één geheel getest kunnen worden. Tijdens een integratie test wordt een gebruikersflow uitgeschreven en vervolgens gesimuleerd op een apparaat \autocite{Flutter2019b}. \newline 
 
-Een integratie test bestaat uit de eindapplicatie, die ook gebruikt zou worden in productie, en een test suite. De test suite definieert de stappen die doorlopen worden tijdens de integratie test. Een voorbeeld van een flow: \textit{De gebruiker klikt op een product, vervolgens verwijdert de gebruiker het product...}. Zie \ref{ch:user-flow} gebruiker-flow voor dit experiment. De test suite vindt de nodige widgets in de applicatie door een unieke \verb|key| te definiëren in de broncode. In de test suite wordt het widget opgeroepen met: \verb|find.byValueKey('product-item')|. \newline
+Een integratie test bestaat uit de eindapplicatie, die ook gebruikt zou worden in productie, en een test suite. De test suite definieert de stappen die doorlopen worden tijdens de integratie test. Een voorbeeld van een flow: \textit{De gebruiker klikt op een product, vervolgens verwijdert de gebruiker het product...}. Zie \ref{ch:user-flow} gebruikersflow voor dit experiment. De test suite vindt de nodige widgets in de applicatie door een unieke \verb|key| te definiëren in de broncode. In de test suite wordt het widget opgeroepen met: \verb|find.byValueKey('product-item')|. \newline
 Deze integratie testen worden in dit experiment gebruikt om de automatische gebruiker-flow uit te schrijven. Zodanig dat telkens hetzelfde pad wordt doorlopen per benadering van State Management.
 
 Om de effectieve integratie testen te schrijven wordt de \verb|flutter_driver| package gebruikt.
@@ -83,7 +83,6 @@ In dit experiment ligt de focus van de verschillende benaderingen van State Mana
 \end{itemize}
 Voor deze opsomming zal per benadering de broncode worden aangepast. De broncode van een benadering van een State Management wordt gestart vanaf boilerplate code. Deze boilerplate code werd op voorhand geschreven. Deze code bevat onder andere de gemeenschappelijke widgets, bijvoorbeeld een product-item, de knoppen...
 Bij deze template is geen sprake van State Management, buiten de state van de \verb|BottomNavigationBar|. De rest van de state wordt aangevuld per verschillende benadering.
-% TODO: add references to repository code
 
 De test suite bevat de volgende stappen die chronologisch worden uitgevoerd:
 \begin{enumerate}
@@ -107,7 +106,7 @@ De test suite bevat de volgende stappen die chronologisch worden uitgevoerd:
     \item De gebruiker sluit de applicatie
 \end{enumerate}
 
-% TODO: aanvullen met een video hoe deze stappen eruit zien?
+De uitvoering van deze stappen zijn te zien in de video. \autocite{DeVrient2019f}
 
 Tijdens het doorlopen van de stappen wordt data gecapteerd. Deze data wordt in Flutter beschouwd als een \verb|Timeline| object. Het \verb|Timeline| object bevat de ruwe uitvoer van de uitgevoerde stappen. Dit JSON-bestand kan bekeken worden in Google Chrome via \verb|chrome://tracing| en resulteert in een visuele voorstelling van de data, te zien op figuur \ref{fig:chrome-tracing-timeline}. Deze uitvoer bevat tal van gemeten waarden. Het CPU-gebruik is samen met de overgeslagen frames voor dit onderzoek de belangrijkste, gemeten data. \newline
 
@@ -127,8 +126,7 @@ Flutter laat het ook niet toe om de profile modus uit te voeren op een emulator.
 Het test apparaat is een OnePlus 3T, zie tabel \ref{table:specifications-test-device} voor de specificaties.
 Nadat de broncode voor elke State Management benadering en integratie testen geschreven zijn, kunnen de resulaten verworven worden voor het experiment.
 
-Samengevat worden voor elke bendaring de gegeven stappen doorlopen door middel van de Flutter integration tests. Tijdens deze procedure wordt de verworven data weggeschreven in een JSON-bestand. Dit bestan bevat de nodige CPU-waarden om verder te gaan met de analyse van de resulaten.
-% TODO: aanvullen? Ja 
+Samengevat worden voor elke bendaring de gegeven stappen doorlopen door middel van de Flutter integration tests. Tijdens deze procedure wordt de verworven data weggeschreven in een bestand. Dit bestand bevat de nodige meetstaven om verder te gaan met de analyse van de resulaten.
 
 \begin{table}[H]
     \centering
@@ -145,10 +143,4 @@ Samengevat worden voor elke bendaring de gegeven stappen doorlopen door middel v
     \caption{Specificaties van het test apparaat}
     \label{table:specifications-test-device}
 \end{table}
-
-%% TODO: Hoe ben je te werk gegaan? Verdeel je onderzoek in grote fasen, en
-%% licht in elke fase toe welke stappen je gevolgd hebt. Verantwoord waarom je
-%% op deze manier te werk gegaan bent. Je moet kunnen aantonen dat je de best
-%% mogelijke manier toegepast hebt om een antwoord te vinden op de
-%% onderzoeksvraag.
 

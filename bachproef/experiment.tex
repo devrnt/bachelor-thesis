@@ -12,10 +12,12 @@ In deze sectie worden de resultaten per benadering opgelijst en besproken, alsoo
 
 
 \section{ScopedModel}
+De broncode is beschikbaar op GitHub. \autocite{DeVrient2019a}
 \subsection{Beschrijving}
 % gebruikte packages en hoe was het verloop
 De implementatie van de ScopedModel benadering wordt beschouwd als één van de eenvoudigere. De ScopedModel vereist geen drastische wijzigingen in de applicatie structuur. De ontwikkelaar schrijft klasse modellen en laat deze eenvoudig uitbreiden van de \verb|Model| klasse. Zo beschikt de applicatie in deze benadering over een winkel, product en voorkeuren model. \newline \newline
 Voor deze benadering wordt enkel beroep gedaan op de \verb|scoped_model| package. 
+
 
 \subsection{Resultaten}
 \subsubsection{Aantal lijnen code}
@@ -47,6 +49,7 @@ Om een duidend overzicht te verkrijgen over de benadering wordt er een extra mee
 Tijdens het doorlopen van de ScopedModel benadering zijn in totaal 838 frames overgeslagen. Dit komt neer op een gemiddelde van 16.76 overgeslagen frames per uitvoering.
 
 \section{Provider}
+De broncode is beschikbaar op GitHub. \autocite{DeVrient2019b}
 \subsection{Beschrijving}
 De Provider benadering is gelijkaardig aan die van ScopedModel. Zowel de architectuur van de code als de toegankelijkheid is te vergelijken met die van ScopedModel. Het enige verschil is dat de model klassen bij ScopedModel overerven van \verb|ChangeNotifier| in plaats van \verb|Model|. \newline \newline
 Voor deze benadering wordt enkel beroep gedaan op de \verb|provider| package. 
@@ -76,6 +79,7 @@ Onderstaande tabel \ref{table:experiment-provider-statistics} beschrijft de CPU-
 Tijdens het doorlopen van de Provider benadering zijn in totaal 595 frames overgeslagen. Dit komt neer op een gemiddelde van 11.90 overgeslagen frames per uitvoering.
 
 \section{BLoC - RxDart}
+De broncode is beschikbaar op GitHub. \autocite{DeVrient2019c}
 \subsection{Beschrijving}
 In deze benadering wordt een BLoC gemaakt voor de winkel en de voorkeuren. De architectuur bij deze benadering is anders dan die bij ScopedModel en Provider. 
 De aanwezigheid van de \verb|BlocProvider| klasse zorgt ervoor dat de geïnjecteerde BLoCs doorheen de applicatie opgevraagd kunnnen worden. \newline \newline
@@ -140,6 +144,7 @@ Onderstaande tabel \ref{table:experiment-bloc-rxdart-statistics} beschrijft de C
 Tijdens het doorlopen van de BLoC - RxDart benadering zijn in totaal 610 frames overgeslagen. Dit komt neer op een gemiddelde van 12.20 overgeslagen frames per uitvoering.
 
 \section{Redux}
+De broncode is beschikbaar op GitHub. \autocite{DeVrient2019d}
 \subsection{Beschrijving}
 Van alle benaderingen vergt Redux de grootste wijziging in de manier van denken. De leercurve van Redux is immers stukken groter vergeleken met ScopedModel en Provider. Opnieuw komt hier hetzelfde argument terug als bij BLoC: in hoeverre wenst de ontwikkelaar tijd te investeren om een State Management onder de knie te krijgen. Eenmaal het concept van Redux duidelijk is, is het gemakkelijk om een applicatie uit te breiden. 
 Als de Redux benadering wordt vergeleken met die van bijvoorbeeld Provider zijn er geen gelijkenissen. De architectuur van de applicatie is verschillend op heel wat vlakken, dit mede dankzij de concepten van Redux. \newline \newline
@@ -176,6 +181,7 @@ Onderstaande tabel \ref{table:experiment-redux-statistics} beschrijft de CPU-tij
 Tijdens het doorlopen van de Redux benadering zijn in totaal 820 frames overgeslagen. Dit komt neer op een gemiddelde van 16.73 overgeslagen frames per uitvoering.
 
 \section{MobX}
+De broncode is beschikbaar op GitHub. \autocite{DeVrient2019e}
 \subsection{Beschrijving}
 De MobX benadering vergt ook een architectuur wijziging. Hoewel deze een stuk toegankelijker is dan bij Redux. De \verb|mobx_codegen| zorgt ervoor dat geen repetitieve code geschreven moet worden, dit gebeurt door middel van annotations. Zie onderstaande code als voorbeeld van een model klasse in de MobX benadering.
 
@@ -225,7 +231,6 @@ Onderstaande tabel \ref{table:experiment-mobx-statistics} beschrijft de CPU-tijd
 Tijdens het doorlopen van de MobX benadering zijn in totaliteit 572 frames overgeslagen. Dit komt neer op een gemiddelde van 11.40 overgeslagen frames per uitvoering.
 
 \section{Samenvatting}
-% TODO: split up in aantal lijnen code en prestaties?
 In tabel \ref{table:amount-lines-of-code} worden de aantal lijnen code per benadering opgesomd. De rij ``gecorrigeerd'' is het aantal lijnen code van de benadering min het aantal lijnen code van de boilerplate code. Het valt op dat de ScopedModel en Provider benadering met voorsprong de minst aantal lijnen code hebben. Redux heeft overduidelijk het meest aantal lijnen code, dit valt te verklaren door de hoeveelheid repetitieve code die geschreven moet worden. \newline \newline
 Indien de ontwikkelaar een keuze moet maken tussen de verschillende benaderingen op basis van de aantal lijnen code zijn ScopedModel en Provider de geschikte kandidaten. Deze zijn immers integreerbaar zonder veel extra code uit te schrijven. Ook vergen beide State Management bendaringen geen wijziging in de architectuur van de applicatie. \newline
 Redux is overduidelijk de verliezer op basis van het aantal lijnen code. De verschillen tussen de MobX en BLoC zijn verwaarloosbaar.
@@ -247,8 +252,7 @@ Hoe minder CPU-tijd een benadering nodig heeft, hoe beter voor de prestaties. Al
 Hoewel Provider over het beste resultaat beschikt, heeft het niet de kleinste standaardafwijking, die behoort tot de MobX benadering. Dit wil zeggen dat de resultaten bij de MobX benadering dichter bij het gemiddelde liggen dan bij BLoC. Dit kan verklaard worden door het feit dat de Provider benadering beschikt over meer uitschieters. \newline \newline 
 Dit resultaat heeft aangetoond dat de Provider benadering het sterkst scoort op CPU-tijd, gevolgd door de BLoC benadering. \newline \newline
 
-% TODO: add dings
-Provider is de State Management benadering dat het best is qua performantie op het vlak va CPU-tijd.
+Provider is de State Management benadering dat het best is qua performantie op het vlak van CPU-tijd.
 
 \begin{table}[H]
     \centering

@@ -17,7 +17,7 @@
 %
 %\textcite{Knuth1998} schreef een van de standaardwerken over sorteer- en zoekalgoritmen. Experten zijn het erover eens dat cloud computing een interessante opportuniteit vormen, zowel voor gebruikers als voor dienstverleners op vlak van informatietechnologie~\autocite{Creeger2009}.
 
-In vorig hoodstuk werd Flutter kort geïntroduceerd als een veelomvattend cross-platform framework. In dit hoofdstuk wordt de huidige stand van zaken van Flutter besproken. Aangezien Flutter recentelijk is geïntroduceerd wordt het framework regelmatig bijgewerkt met nieuwe functionaliteiten. Dit hoofdstuk bouwt verder op die van \autocite{Coninck2019}, daarnaast wordt het concept State Management uitvoerig besproken. Tenslotte wordt State Management in Flutter en de verschillende mogelijkheden besproken. 
+In vorig hoodstuk werd Flutter kort geïntroduceerd als een veelomvattend cross-platform framework. In dit hoofdstuk wordt de huidige stand van zaken van Flutter besproken. Aangezien Flutter recentelijk is geïntroduceerd wordt het framework regelmatig bijgewerkt met nieuwe functionaliteiten. Dit hoofdstuk bouwt verder op die van \autocite{DeConinck2019}, daarnaast wordt het concept State Management uitvoerig besproken. Tenslotte wordt State Management in Flutter en de verschillende mogelijkheden besproken. 
 \newline
 
 \section{Flutter}
@@ -29,7 +29,7 @@ Flutter kenmerkt zich vooral door de snelle ontwikkelingsomgeving. Mede dankzij 
 Een tweede kenmerk van Flutter is dat de eindapplicaties beschikken over native performances. Flutter compileert de broncode naar native ARM-machinecode en x86 code door gebruik te maken van de Dart Native Compilers \autocite{Dart2019}.
 
 Flutter is een open-source project, gepubliceerd door Google, waardoor het beroep kan doen op de nodige financiële noden om het framework verder te laten groeien. 
-Deze literatuurstudie is gebaseerd op de bachelorproef van \autocite{Coninck2019}
+Deze literatuurstudie is gebaseerd op de bachelorproef van \autocite{DeConinck2019}
 
 \subsection{Alles is een widget}
 \label{ch:alles-is-een-widget}
@@ -59,8 +59,6 @@ Andere cross-platform frameworks zoals React Native, maken gebruik van een verta
     \caption{De architectuur van een React Native applicatie \autocite{Leler2017}}
     \label{fig:react-native-app-architecture}
 \end{figure}
-
-% TODO: supported platforms
 
 \subsection{Flutter Web}
 Flutter heeft hoofdzakelijk als platform mobiele apparaten, maar is zeker niet beperkt tot het maken van mobiele apps. Zo is Flutter Web in Flutter versie 1.9 beschikbaar als technical preview. Dit houdt in dat Flutter Web zelfs nog niet beschikbaar is in alfa of beta. Aangezien Flutter web zich nog in technical preview bevindt, wordt er aangeraden om Flutter web nog niet te gebruiken in productie. De werking van Flutter Web wordt in deze sectie verder besproken.
@@ -94,7 +92,7 @@ In deze sectie wordt het concept state en de bijhorende State Management uitvoer
 
 \subsection{State}
 \label{ch:state}
-De state van een applicatie is alles dat bijgehouden wordt in het geheugen terwijl de applicatie draait. \autocite{Coninck2019}
+De state van een applicatie is alles dat bijgehouden wordt in het geheugen terwijl de applicatie draait. \autocite{DeConinck2019}
 Een simpel voorbeeld van state is het volgende: één invoerveld voor voornaam, één invoerveld voor achternaam en één knop die niet klikbaar is, de state van deze knop kan beschouwd worden als een variabele \textit{klikbaar = onwaar}. Op dit moment is de knop niet klikbaar. Indien de invoervelden een geldige invoer ontvangen, wordt de state van de knop bijgewerkt: \textit{klikaar = waar}. Dit resulteert in een klikbare knop. De state van de knop is afhankelijk van de state van de invoervelden. Dit is een relatief simpel voorbeeld, maar wanneer een applicatie groeit wordt dit een zeer complex probleem. Bijvoorbeeld wanneer een state van een bericht afhankelijk is van een factor op een andere pagina. De state zal op verschillende schermen gedeeld moeten worden.
 In de breedst mogelijke zin is de state van een applicatie alles wat in het geheugen bestaat wanneer de app wordt uitgevoerd. 
 
@@ -404,7 +402,7 @@ Redux bestaat uit een paar verschillende principes: er wordt gebruik gemaakt van
 
 Volgens de officiële documentatie van Redux \autocite{Redux2019} is het een good practice om per applicatie slechts een enkele Store te hebben. Indien het toch gewenst is om de data handling te scheiden wordt aangeraden om \verb|reducer composition| toe te passen in plaats van meerdere stores te maken.
 
-\subsection{Werking}
+\subsubsection{Werking}
 Over het algemeen is de werking van Redux samen te vatten zoals op de figuur \ref{fig:redux-working}. Een applicatie bevat state. Deze state wordt aan een gebruiker getoond in de presentatielaag. Wanneer de presentatielaag een wijziging teweeg brengt, bijvoorbeeld door een klik op een knop, wordt een Action opgeroepen. De Action wordt ontvangen door een Reducer. Deze reducer werkt de Store bij waar de State van de applicatie wordt bijgehouden. Merk op dat deze Action door een Middleware kan passeren vooraleer deze wordt afgehandeld door een Reducer.
 
 \begin{figure}[H]
