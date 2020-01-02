@@ -6,7 +6,7 @@
 \label{ch:methodologie}
 
 \section{Inleiding}
-Om een antwoord te krijgen op de onderzoeksvraag wordt een experiment opgesteld. In dit experiment wordt een mobiele applicatie ontwikkeld voor de, reeds opgesomde, benaderingen van State Management. Dit experiment zal, per benadering van de verschillende State Management, twee resultaten opleveren. Het eerste resultaat zal het aantal lijnen code van het project bevatten per benadering. Hoe deze meting te werk zal gaan wordt in sectie \ref{ch:loc} besproken. Als tweede resultaat wordt een automatische procedure een aantal keer doorlopen, dit wordt uitvoerig besproken in sectie \ref{ch:prestaties}. \newline
+Om een antwoord te krijgen op de onderzoeksvraag wordt een experiment opgesteld. In dit experiment wordt een mobiele applicatie ontwikkeld voor de reeds opgesomde benaderingen van State Management. Dit experiment zal, per benadering van de verschillende State Management, twee resultaten opleveren. Het eerste resultaat zal het aantal lijnen code van het project bevatten per benadering. Hoe deze meting te werk zal gaan wordt in sectie \ref{ch:loc} besproken. Als tweede resultaat wordt een automatische procedure een aantal keer doorlopen, dit wordt uitvoerig besproken in sectie \ref{ch:prestaties}. \newline
 Als eerst worden de nodige voorbereidingen voor dit experiment besproken.
 
 \section{Voorbereidingen}
@@ -49,11 +49,11 @@ Op de voorkeurenpagina kan de gebruiker het thema aanpassen, dit gebeurt met de 
 Wanneer het thema wijzigt, wordt de gehele applicatie aangepast naar het geselecteerde thema. Aangezien de gehele applicatie moet gewijzigd worden, is dit een interessante pagina op vlak van state. Namelijk elk widget in de widget tree moet opnieuw gebouwd worden om de wijzigingen ``at runtime'' toe te passen.
 
 
-De broncode is beschikbaar op \url{https://github.com/devrnt/bachelor-thesis-store-it}\autocite{DeVrient2019}. De \verb|master| tak bevat de boilerplate code. De verschillende benaderingen zijn onderveeld per tak. Zo bevat de \verb|mobx| tak de MobX State Management benadering.
+De broncode is beschikbaar op \url{https://github.com/devrnt/bachelor-thesis-store-it} \autocite{DeVrient2019}. De \verb|master| tak bevat de boilerplate code. De verschillende benaderingen zijn onderveeld per tak. Zo bevat de \verb|mobx| tak de MobX State Management benadering.
 
 \section{Aantal lijnen code}
 \label{ch:loc}
-Om een benaderend meetniveau te verkrijgen voor de complexiteit van een State Management worden de aantal lijnen code geteld. Dit resultaat zal een beeld scheppen op de hoeveelheid code die geschreven moet worden om een benadering van State Management uit te schrijven. Merk op dat de complexiteit van een benadering verschillend is van ontwikkelaar tot ontwikkelaar, dit is en blijft een subjectief meetniveau. Uit dit resultaat wordt besloten hoe vlot een benadering van State Management geschreven kan worden. Dit kan leiden tot bijvoorbeeld volgende conclusie: Flutter beginners zullen de voorkeur geven aan benaderingen die vlugger zijn uit te schrijven. 
+Om een benaderend meetniveau te verkrijgen voor de complexiteit van een State Management worden de aantal lijnen code geteld. Dit resultaat zal een beeld scheppen op de hoeveelheid code die geschreven moet worden om een benadering van State Management uit te schrijven. Merk op dat de complexiteit van een benadering verschillend is van ontwikkelaar tot ontwikkelaar, dit is en blijft een subjectief meetniveau. Uit dit resultaat wordt besloten hoe vlot een benadering van State Management geschreven kan worden.  
 
 De aantal lijnen code van de Dart bestanden worden geteld. De Dart bestanden worden gekenmerkt door de \verb|.dart| extensie. Hiervoor wordt per verschillende benadering het volgende commando gebruikt: \verb=find ./lib/ -name '*.dart' \| xargs wc -l=. Dit commando geeft het totaal aantal lijnen code terug, dit zal per verschillende benadering uitgevoerd worden. \newline 
 Tijdens het schrijven van de benaderingen wordt er rekening gehouden met volgende afspraken: commentaar in de code wordt, voor het commando wordt uitgevoerd, verwijderd. Er wordt enkel gebruik gemaakt van een backspace (nieuwe lijn) voor de scheiding van de verschillende methodes. Deze afspraken worden strict nagestreefd doorheen de verschillende benaderingen. \newline
@@ -64,14 +64,14 @@ Vooraleer de aantal lijnen code worden geteld, wordt de broncode van de verschil
 \section{Prestaties}
 \label{ch:prestaties}
 \subsection{Integratietesten}
-Flutter beschikt over de nodige tools voor het uitvoeren van integratie testen. Deze testen schrijven de gebruikersflow uit, waardoor individuele modules als één geheel getest kunnen worden. Tijdens een integratie test wordt een gebruikersflow uitgeschreven en vervolgens gesimuleerd op een apparaat \autocite{Flutter2019b}. \newline 
+Flutter beschikt over de nodige tools voor het uitvoeren van integratietesten. Deze testen schrijven de gebruikersflow uit, waardoor individuele modules als één geheel getest kunnen worden. Tijdens een integratie test wordt een gebruikersflow uitgeschreven en vervolgens gesimuleerd op een apparaat \autocite{Flutter2019b}. 
 
 Een integratie test bestaat uit de eindapplicatie, die ook gebruikt zou worden in productie, en een test suite. De test suite definieert de stappen die doorlopen worden tijdens de integratie test. Een voorbeeld van een flow: \textit{De gebruiker klikt op een product, vervolgens verwijdert de gebruiker het product...}. Zie \ref{ch:user-flow} gebruikersflow voor dit experiment. De test suite vindt de nodige widgets in de applicatie door een unieke \verb|key| te definiëren in de broncode. In de test suite wordt het widget opgeroepen met: \verb|find.byValueKey('product-item')|. \newline
-Deze integratie testen worden in dit experiment gebruikt om de automatische gebruiker-flow uit te schrijven. Zodanig dat telkens hetzelfde pad wordt doorlopen per benadering van State Management.
+Deze integratietesten worden in dit experiment gebruikt om de automatische gebruiker-flow uit te schrijven. Zodanig dat telkens hetzelfde pad wordt doorlopen per benadering van State Management.
 
-Om de effectieve integratie testen te schrijven wordt de \verb|flutter_driver| package gebruikt.
+Om de effectieve integratietesten te schrijven wordt de \verb|flutter_driver| package gebruikt.
 Een integratie test maakt een instrumentale versie van de applicatie. Deze instrumentale versie maakt het mogelijk om de applicatie te besturen (met de stappen uit de test suite) en prestaties te capteren.
-De integratie testen worden uitgevoerd in de profile modus van Flutter. De profile modus compileert en start een applicatie bijna identiek als de release mode (productie) en beschikt over de extra functionaliteit om prestatieproblemen te capteren en te debuggen.
+De integratietesten worden uitgevoerd in de profile modus van Flutter. De profile modus compileert en start een applicatie bijna identiek als de release mode (productie) en beschikt over de extra functionaliteit om prestatieproblemen te capteren en te debuggen.
 
 \subsection{Gebruikersflow}
 \label{ch:user-flow}
@@ -108,7 +108,7 @@ De test suite bevat de volgende stappen die chronologisch worden uitgevoerd:
 
 De uitvoering van deze stappen zijn te zien in de video. \autocite{DeVrient2019f}
 
-Tijdens het doorlopen van de stappen wordt data gecapteerd. Deze data wordt in Flutter beschouwd als een \verb|Timeline| object. Het \verb|Timeline| object bevat de ruwe uitvoer van de uitgevoerde stappen. Dit JSON-bestand kan bekeken worden in Google Chrome via \verb|chrome://tracing| en resulteert in een visuele voorstelling van de data, te zien op figuur \ref{fig:chrome-tracing-timeline}. Deze uitvoer bevat tal van gemeten waarden. Het CPU-gebruik is samen met de overgeslagen frames voor dit onderzoek de belangrijkste, gemeten data. \newline
+Tijdens het doorlopen van de stappen wordt data gecapteerd. Deze data wordt in Flutter beschouwd als een \verb|Timeline| object. Het \verb|Timeline| object bevat de ruwe uitvoer van de uitgevoerde stappen. Dit JSON-bestand kan bekeken worden in Google Chrome via \verb|chrome://tracing| en resulteert in een visuele voorstelling van de data, te zien op figuur \ref{fig:chrome-tracing-timeline}. Deze uitvoer bevat tal van gemeten waarden. De CPU-tijd is samen met de overgeslagen frames voor dit onderzoek de belangrijkste, gemeten data. 
 
 De stappen worden per benadering doorlopen. Deze procedure zal voor elke benadering 50 keer uitgevoerd worden. Dit zorgt voor voldoende resultaten om te analyseren. Zo wordt ook, de kans dat een conclusie wordt gebasseerd op toevallige meetresulaten, verkleind.
 
@@ -124,7 +124,7 @@ Hoewel een iOS Simulator en een Android Emulator goed van pas komen tijdens de o
 
 Flutter laat het ook niet toe om de profile modus uit te voeren op een emulator.
 Het test apparaat is een OnePlus 3T, zie tabel \ref{table:specifications-test-device} voor de specificaties.
-Nadat de broncode voor elke State Management benadering en integratie testen geschreven zijn, kunnen de resulaten verworven worden voor het experiment.
+Nadat de broncode voor elke State Management benadering en integratietesten geschreven zijn, kunnen de resulaten verworven worden voor het experiment.
 
 Samengevat worden voor elke bendaring de gegeven stappen doorlopen door middel van de Flutter integration tests. Tijdens deze procedure wordt de verworven data weggeschreven in een bestand. Dit bestand bevat de nodige meetstaven om verder te gaan met de analyse van de resulaten.
 

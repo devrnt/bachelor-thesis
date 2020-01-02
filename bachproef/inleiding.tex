@@ -6,7 +6,7 @@
 \label{ch:inleiding}
 
 % Algemene inleiding van Flutter, nog geen sprake van een 'probleem'
-Sinds de introductie van Flutter is het ontwikkelen van cross-platform applicaties een stuk toegankelijker gemaakt. Flutter is zeer bereikbaar voor nieuwe ontwikkelaars, maar beperkt zich niet om applicaties te ontwikkelen. Dit reflecteert zich in de voldoende proof of concepts die reeds gepubliceerd zijn. Flutter maakt het mogelijk om zowel een mobiele als webapplicatie te ontwikkelen met één codebase. Flutter heeft zijn recentelijke populariteit te danken aan de levende community en vaste ontwikkelaars die het open-source project onderhoudt. Flutter kan beschouwd worden als een reeds succesvol product geïntroduceerd door Google.
+Sinds de introductie van Flutter is het ontwikkelen van cross-platform applicaties een stuk toegankelijker gemaakt. Flutter is zeer bereikbaar voor nieuwe ontwikkelaars, maar beperkt zich niet voor het ontwikkelen van applicaties voor reeds gevorderde ontwikkelaars. Dit reflecteert zich in de voldoende proof of concepts die reeds gepubliceerd zijn. Flutter maakt het mogelijk om zowel een mobiele applicatie voor Android en iOS als webapplicatie te ontwikkelen met één codebase. Flutter heeft zijn recentelijke populariteit te danken aan de levende community en vaste ontwikkelaars die het open-source project onderhoudt. Flutter kan beschouwd worden als een reeds succesvol product geïntroduceerd door Google.
 \newline
 
 %De inleiding moet de lezer net genoeg informatie verschaffen om het onderwerp te begrijpen en in te zien waarom de onderzoeksvraag de moeite waard is om te onderzoeken. In de inleiding ga je literatuurverwijzingen beperken, zodat de tekst vlot leesbaar blijft. Je kan de inleiding verder onderverdelen in secties als dit de tekst verduidelijkt. Zaken die aan bod kunnen komen in de inleiding~\autocite{Pollefliet2011}:
@@ -26,7 +26,7 @@ Sinds de introductie van Flutter is het ontwikkelen van cross-platform applicati
 
 Door de populariteit en toegankelijkheid van Flutter duiken er tal van vragen op in verband met State Management in een Flutter applicatie. Nieuwkomers in het Flutter framework gaan hoogstwaarschijnlijk een minder complexe aanpak hanteren. Niettemin dat deze applicatie perfect gaat werken, maar eerder over de rommelige manier waarop de code geschreven is. Dit is een erkend probleem door het ontwikkelingsteam van Flutter.
 \newline
-In deze bachelorproef wordt aangetoond welke benadering van State Management in Flutter de beste prestaties met zich teweegbrengt, zo-ook hoe snel een benadering van State Management uitgeschreven kan worden. Het resultaat van dit onderzoek zal een meerwaarde bieden voor de Flutter community. Om te beginnen wordt er een literatuurstudie uitgevoerd, met een beknopte samenvatting van Flutter anno eind 2019 en wat is State Management. Aansluitend wordt een experiment opgesteld, waarbij dezelfde mobiele applicatie wordt ontwikkeld in de verschillende benaderingen. Nadat de applicatie is geschreven, worden de prestaties gemeten en de aantal geschreven lijnen broncode geteld. Dit is terug te vinden in Hoofdstuk 3.
+In deze bachelorproef wordt aangetoond welke benadering van State Management in Flutter de beste prestaties met zich teweegbrengt, zo-ook hoe snel een benadering van State Management uitgeschreven kan worden. Het resultaat van dit onderzoek zal een meerwaarde bieden voor de Flutter community. Om te beginnen wordt er een literatuurstudie uitgevoerd, met een beknopte samenvatting van Flutter anno eind 2019. Verder wordt het begrip State Management toegelicht. Aansluitend wordt een experiment opgesteld, waarbij dezelfde mobiele applicatie wordt ontwikkeld in de verschillende benaderingen. Nadat de applicatie is geschreven, worden de prestaties gemeten en de aantal geschreven lijnen broncode geteld. Dit is terug te vinden in Hoofdstuk 3.
 \newline
 In Hoofdstuk 4 wordt de conclusie van deze bachelorproef opgelijst.
 %Uit je probleemstelling moet duidelijk zijn dat je onderzoek een meerwaarde heeft voor een concrete doelgroep. De doelgroep moet goed gedefinieerd en afgelijnd zijn. Doelgroepen als ``bedrijven,'' ``KMO's,'' systeembeheerders, enz.~zijn nog te vaag. Als je een lijstje kan maken van de personen/organisaties die een meerwaarde zullen vinden in deze bachelorproef (dit is eigenlijk je steekproefkader), dan is dat een indicatie dat de doelgroep goed gedefinieerd is. Dit kan een enkel bedrijf zijn of zelfs één persoon (je co-promotor/opdrachtgever).
@@ -41,12 +41,10 @@ Hoeveel impact hebben verschillende benaderingen van State Management in Flutter
 Om de impact vatbaar te maken worden de volgende deelonderzoeksvragen opgesteld:
 \begin{itemize}
     \item Hoeveel verschilt de geschreven code bij verschillende benaderingen van State Management, met andere woorden
-    hoe snel ken een benadering van State Management geschreven worden.
-    \item{Hoe varieren de prestaties bij de verschillende benaderingen van State Management?}
+    hoe snel kan een benadering van State Management geschreven worden.
+    \item{Hoe variëren de prestaties bij de verschillende benaderingen van State Management?}
 \end{itemize}
 
-Hoe variëren de prestaties bij de verschillende benaderingen van State Management?
-\newline
 Deze deelonderzoeksvragen zullen samen met de literatuurstudie een antwoord bieden op de hoofdonderzoekvraag. Dit antwoord staat genoteerd in Hoofdstuk 5.
 
 %Wees zo concreet mogelijk bij het formuleren van je onderzoeksvraag. Een onderzoeksvraag is trouwens iets waar nog niemand op dit moment een antwoord heeft (voor zover je kan nagaan). Het opzoeken van bestaande informatie (bv. ``welke tools bestaan er voor deze toepassing?'') is dus geen onderzoeksvraag. Je kan de onderzoeksvraag verder specifiëren in deelvragen. Bv.~als je onderzoek gaat over performantiemetingen, dan 
@@ -54,7 +52,7 @@ Deze deelonderzoeksvragen zullen samen met de literatuurstudie een antwoord bied
 \section{\IfLanguageName{dutch}{Onderzoeksdoelstelling}{Research objective}}
 \label{sec:onderzoeksdoelstelling}
 
-Het ontwikkelingsteam van Flutter heeft reeds verschillende benaderingen van State Management aangeraden, maar deze zijn opgedeeld op basis van hun moeilijkheidsgraad. Het topic State Management wordt beschouwd als een ingewikkeld onderwerp. Er zijn geen onderzoeken gebeurd wat de verschillende benaderingen nu effectief met zich meerbrengt qua prestaties.
+Het ontwikkelingsteam van Flutter heeft reeds verschillende benaderingen van State Management aangeraden, maar deze zijn opgedeeld op basis van de persoonlijke voorkeuren van de ontwikkelaar. Het topic State Management wordt beschouwd als een ingewikkeld onderwerp. Er zijn geen onderzoeken gebeurd wat de verschillende benaderingen nu effectief met zich meerbrengt qua prestaties.
 
 Dit onderzoek zal een richtlijn bieden om een bepaalde benaderingen van State Management al dan niet te hanteren in een Flutter applicatie. 
 %Wat is het beoogde resultaat van je bachelorproef? Wat zijn de criteria voor succes? Beschrijf die zo concreet mogelijk. Gaat het bv. om een proof-of-concept, een prototype, een verslag met aanbevelingen, een vergelijkende studie, enz.
