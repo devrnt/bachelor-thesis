@@ -13,7 +13,7 @@ Als eerst worden de nodige voorbereidingen voor dit experiment besproken.
 \subsection{De applicatie}
 De applicatie heet ``Store It'. Het hoofddoel van de applicatie is om producten te bekijken en toe te voegen. De koper heeft als doel de lijst van producten te raadplegen. Alsook de details van een product te bekijken en eventueel een product te verwijderen. Een verkoper heeft als hoofddoel om een product toe te voegen. Om de complexiteit van de applicatie te beperken wordt geen onderscheid gemaakt tussen een klant en een verkoper.\newline
 
-De layout van de mobiele applicatie is gebasseerd op mock-ups, zie figuren \ref{fig:mock-ups-store-it}. Deze mock-ups werden op voorhand gemaakt zodat tijdens het ontwikkelen van de applicatie geen tijd besteed wordt aan de visuele aspecten.
+De layout van de mobiele applicatie is gebaseerd op mock-ups, zie figuren \ref{fig:mock-ups-store-it}. Deze mock-ups werden op voorhand gemaakt zodat tijdens het ontwikkelen van de applicatie geen tijd besteed wordt aan de visuele aspecten.
 
 \begin{figure}
     \begin{tabular}{cc}
@@ -39,7 +39,7 @@ De Store It applicatie maakt het navigeren mogelijk met een \verb|BottomNavigati
 Op basis van deze index wordt de bijhorende pagina getoond.
 
 Wanneer een gebruiker op een product klikt, wordt de detailspagina geopend. \newline
-De gebruiker heeft de mogelijkheid om het product te verwijderen op de detailspagina. Indien het product is verwijderd, wordt een snackbar getoond met een bevestiging en wordt de gebruik herleid naar de startpagina.
+De gebruiker heeft de mogelijkheid om het product te verwijderen op de detailspagina. Indien het product is verwijderd, wordt een snackbar getoond met een bevestiging en wordt de gebruiker herleid naar de startpagina.
 De detailspagina is de enige pagina die bovenop de actieve pagina wordt gepusht. Deze pagina beschikt over een terug knop die de detailspagina zal ``poppen''.
 
 Op de voeg-product-toe pagina wordt een invulformulier getoond. Hier kan de gebruiker een nieuw product toevoegen. De invoervelden beschikken over standaard validatie waarbij de ingevoerde waarde niet leeg mag zijn. Indien deze validatie niet is voldaan, wordt een gepaste melding onder desbetreffend invoerveld getoond. \newline
@@ -53,12 +53,12 @@ De broncode is beschikbaar op \url{https://github.com/devrnt/bachelor-thesis-sto
 
 \section{Aantal lijnen code}
 \label{ch:loc}
-Om een benaderend meetniveau te verkrijgen voor de complexiteit van een State Management worden de aantal lijnen code geteld. Dit resultaat zal een beeld scheppen op de hoeveelheid code die geschreven moet worden om een benadering van State Management uit te schrijven. Merk op dat de complexiteit van een benadering verschillend is van ontwikkelaar tot ontwikkelaar, dit is en blijft een subjectief meetniveau. Uit dit resultaat wordt besloten hoe vlot een benadering van State Management geschreven kan worden.  
+Om een benaderend meetniveau te verkrijgen voor de complexiteit van een State Management worden het aantal lijnen code geteld. Dit resultaat zal een beeld scheppen op de hoeveelheid code die geschreven moet worden om een benadering van State Management uit te schrijven. Merk op dat de complexiteit van een benadering verschillend is van ontwikkelaar tot ontwikkelaar, dit is en blijft een subjectief meetniveau. Uit dit resultaat wordt besloten hoe vlot een benadering van State Management geschreven kan worden.  
 
-De aantal lijnen code van de Dart bestanden worden geteld. De Dart bestanden worden gekenmerkt door de \verb|.dart| extensie. Hiervoor wordt per verschillende benadering het volgende commando gebruikt: \verb=find ./lib/ -name '*.dart' \| xargs wc -l=. Dit commando geeft het totaal aantal lijnen code terug, dit zal per verschillende benadering uitgevoerd worden. \newline 
+Het aantal lijnen code van de Dart bestanden wordt geteld. De Dart bestanden worden gekenmerkt door de \verb|.dart| extensie. Hiervoor wordt per verschillende benadering het volgende commando gebruikt: \verb=find ./lib/ -name '*.dart' \| xargs wc -l=. Dit commando geeft het totaal aantal lijnen code terug, dit zal per verschillende benadering uitgevoerd worden. \newline 
 Tijdens het schrijven van de benaderingen wordt er rekening gehouden met volgende afspraken: commentaar in de code wordt, voor het commando wordt uitgevoerd, verwijderd. Er wordt enkel gebruik gemaakt van een backspace (nieuwe lijn) voor de scheiding van de verschillende methodes. Deze afspraken worden strict nagestreefd doorheen de verschillende benaderingen. \newline
 \newline
-Vooraleer de aantal lijnen code worden geteld, wordt de broncode van de verschillende benaderingen geformateerd. In dit experiment wordt de \verb|dart_style| package gebruikt als formatter. Deze formatter hanteert de richtlijnen van de Dart style guide \autocite{Dart2019a}. De \verb|line-length| wordt ingesteld op 90. Dit houdt in, dat lijnen die langer zijn dan 90 karakters, gebroken worden en op een nieuwe lijn verder lopen. Om de code te formatteren wordt volgend commando uitgevoerd: \verb|flutter format -l 90 ./lib/|.
+Vooraleer het aantal lijnen code wordt geteld, wordt de broncode van de verschillende benaderingen geformateerd. In dit experiment wordt de \verb|dart_style| package gebruikt als formatter. Deze formatter hanteert de richtlijnen van de Dart style guide \autocite{Dart2019a}. De \verb|line-length| wordt ingesteld op 90. Dit houdt in, dat lijnen die langer zijn dan 90 karakters, gebroken worden en op een nieuwe lijn verder lopen. Om de code te formatteren wordt volgend commando uitgevoerd: \verb|flutter format -l 90 ./lib/|.
 
 
 \section{Prestaties}
@@ -78,8 +78,8 @@ De integratietesten worden uitgevoerd in de profile modus van Flutter. De profil
 In dit experiment ligt de focus van de verschillende benaderingen van State Management op volgende zaken: 
 \begin{itemize}
     \item De gebruiker wijzigt het thema op de voorkeurenpagina.
-    \item De gebruiker voegt een nieuw product toe, als gevolg dat de lijst van producten moet bijgewerkt worden op de andere pagina.
-    \item De gebruiker verwijdert een product op het detailspagina, als gevolg dat de lijst van producten moet bijgewerkt worden op de startpagina.
+    \item De gebruiker voegt een nieuw product toe, met gevolg dat de lijst van producten moet bijgewerkt worden op de andere pagina.
+    \item De gebruiker verwijdert een product op het detailspagina, met gevolg dat de lijst van producten moet bijgewerkt worden op de startpagina.
 \end{itemize}
 Voor deze opsomming zal per benadering de broncode worden aangepast. De broncode van een benadering van een State Management wordt gestart vanaf boilerplate code. Deze boilerplate code werd op voorhand geschreven. Deze code bevat onder andere de gemeenschappelijke widgets, bijvoorbeeld een product-item, de knoppen...
 Bij deze template is geen sprake van State Management, buiten de state van de \verb|BottomNavigationBar|. De rest van de state wordt aangevuld per verschillende benadering.
@@ -110,7 +110,7 @@ De uitvoering van deze stappen zijn te zien in de video. \autocite{DeVrient2019f
 
 Tijdens het doorlopen van de stappen wordt data gecapteerd. Deze data wordt in Flutter beschouwd als een \verb|Timeline| object. Het \verb|Timeline| object bevat de ruwe uitvoer van de uitgevoerde stappen. Dit JSON-bestand kan bekeken worden in Google Chrome via \verb|chrome://tracing| en resulteert in een visuele voorstelling van de data, te zien op figuur \ref{fig:chrome-tracing-timeline}. Deze uitvoer bevat tal van gemeten waarden. De CPU-tijd is samen met de overgeslagen frames voor dit onderzoek de belangrijkste, gemeten data. 
 
-De stappen worden per benadering doorlopen. Deze procedure zal voor elke benadering 50 keer uitgevoerd worden. Dit zorgt voor voldoende resultaten om te analyseren. Zo wordt ook, de kans dat een conclusie wordt gebasseerd op toevallige meetresulaten, verkleind.
+De stappen worden per benadering doorlopen. Deze procedure zal voor elke benadering 50 keer uitgevoerd worden. Dit zorgt voor voldoende resultaten om te analyseren. Zo wordt ook, de kans dat een conclusie wordt gebaseerd op toevallige meetresulaten, verkleind.
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/methodologie/chrome-tracing-timeline.jpg}
@@ -120,7 +120,7 @@ De stappen worden per benadering doorlopen. Deze procedure zal voor elke benader
 
 
 \subsection{Test apparaat}
-Hoewel een iOS Simulator en een Android Emulator goed van pas komen tijdens de ontwikkeling van een applicatie wordt voor het meten van de resultaten beroep gedaan op een fysiek apparaat. De meetresultaten die verkregen zouden worden op een emulator zullen verre van een realistische reflectie zijn op de verkregen resultaten op een fysiek apparaat. \autocite{Flutter2019c}
+Hoewel een iOS Simulator en een Android Emulator goed van pas komen tijdens de ontwikkeling van een applicatie wordt voor het meten van de resultaten beroep gedaan op een fysiek apparaat. De meetresultaten die verkregen zouden worden op een emulator zouden verre van een realistische reflectie zijn op de verkregen resultaten op een fysiek apparaat. \autocite{Flutter2019c}
 
 Flutter laat het ook niet toe om de profile modus uit te voeren op een emulator.
 Het test apparaat is een OnePlus 3T, zie tabel \ref{table:specifications-test-device} voor de specificaties.

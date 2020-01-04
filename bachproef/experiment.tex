@@ -7,7 +7,7 @@
 \label{ch:experiment}
 
 % TODO: move this section to previous chapter
-In deze sectie worden de resultaten per benadering opgelijst en besproken, alsook vergeleken met elkaar. Eerst wordt de gekozen benadering kort besproken en worden eventuele interessante zaken naar bovengehaald die zich tijdens de implementatie voordeden. Daarna worden de resultaten besproken. Deze resultaten omvatten het aantal lijnen code en de prestaties. \newline \newline Bij de prestaties wordt voornamelijk gekeken naar de CPU-tijd en de overgeslagen frames. De CPU-tijd is de totale tijd dat de CPU Dart code heeft uitgevoerd. Dit is een goede benadering voor het batterijverbruik.
+In deze sectie worden de resultaten per benadering opgelijst en besproken, alsook vergeleken met elkaar. Eerst wordt de gekozen benadering kort besproken en worden eventuele interessante zaken naar bovengehaald die zich tijdens de implementatie voordeden. Daarna worden de resultaten besproken. Deze resultaten omvatten het aantal lijnen code en de prestaties. \newline \newline Bij de prestaties wordt voornamelijk gekeken naar de CPU-tijd en de overgeslagen frames. De CPU-tijd is de totale tijd die de CPU Dart code heeft uitgevoerd. Dit is een goede benadering voor het batterijverbruik.
 
 
 \section{ScopedModel}
@@ -20,12 +20,12 @@ Voor deze benadering wordt enkel beroep gedaan op de \verb|scoped_model| package
 
 \subsection{Resultaten}
 \subsubsection{Aantal lijnen code}
-Deze benadering vereist geen boilerplate code en dit reflecteert zich in het aantal lijnen code. Voor deze benadering zijn in totaliteit 802 lijnen code geschreven. In vergelijking met het aantal lijnen code van de boilerplate code, die 711 bedraagt, is dit geen groot verschil. 
+Deze benadering vereist geen boilerplate code en dit reflecteert zich in het aantal lijnen code. Voor deze benadering zijn in totaliteit 802 lijnen code geschreven. In vergelijking met het aantal lijnen code van de boilerplate code, die 711 bedraagt, is dit geen groot verschil. Dit komt neer op een procentueel verschil van 12%.
 
 Op basis van het aantal lijnen code wordt de ScopedModel als een toegankelijke benadering beschouwd die snel is uit te schrijven.
 
 \subsubsection{Prestaties}
-Onderstaande tabel \ref{table:experiment-scopedmodel-statistics} beschrijft de CPU-tijd, inclusief enkele statistieken. De CPU-tijd wordt genoteerd in milliseconden. Alle getallen worden indien nodig afgerond op twee cijfers na de komma.
+Onderstaande tabel \ref{table:experiment-scopedmodel-statistics} beschrijft de CPU-tijd, inclusief enkele statistieken. Deze resultaten werden verworven tijdens het doorlopen van de 50 uitvoeringen. De CPU-tijd wordt genoteerd in milliseconden. Alle getallen worden indien nodig afgerond op twee cijfers na de komma.
 \begin{table}[H]
     \centering
     \begin{tabular}{c|c}
@@ -43,7 +43,7 @@ Onderstaande tabel \ref{table:experiment-scopedmodel-statistics} beschrijft de C
 \end{table}
 
 % TODO: move this to previous chapter?
-Om een duidend overzicht te verkrijgen over de benadering wordt er een extra meeteenheid bekeken, namelijk het aantal aantal overgeslagen frames. Er is sprake van een overgeslagen frame wanneer de applicatie een frame niet kan tekenen binnen een bepaalde tijdsspanne. Als gevolg dat de frame wordt overgeslagen. Dit resulteert in de UI die niet vloeiend overkomt. \autocite{Flutter2019d}.
+Om een duidend overzicht te verkrijgen over de benadering wordt er een extra meeteenheid bekeken, namelijk het aantal aantal overgeslagen frames. Er is sprake van een overgeslagen frame wanneer de applicatie een frame niet kan tekenen binnen een bepaalde tijdsspanne. Met als gevolg dat de frame wordt overgeslagen. Dit resulteert in de UI die niet vloeiend overkomt. \autocite{Flutter2019d}.
 
 Tijdens het doorlopen van de ScopedModel benadering zijn in totaal 838 frames overgeslagen. Dit komt neer op een gemiddelde van 16.76 overgeslagen frames per uitvoering.
 
@@ -58,7 +58,7 @@ Voor deze benadering wordt enkel beroep gedaan op de \verb|provider| package.
 Voor deze benadering zijn in totaliteit 804 lijnen code geschreven. Net zoals ScopedModel is deze benadering toegankelijk en snel uit te schrijven.
 
 \subsubsection{Prestaties}
-Onderstaande tabel \ref{table:experiment-provider-statistics} beschrijft de CPU-tijd, inclusief enkele statistieken. De CPU-tijd wordt genoteerd in milliseconden. Alle getallen worden indien nodig afgerond op twee cijfers na de komma.
+Onderstaande tabel \ref{table:experiment-provider-statistics} beschrijft de CPU-tijd, inclusief enkele statistieken. Deze resultaten werden verworven tijdens het doorlopen van de 50 uitvoeringen. De CPU-tijd wordt genoteerd in milliseconden. Alle getallen worden indien nodig afgerond op twee cijfers na de komma.
 \begin{table}[H]
     \centering
     \begin{tabular}{c|c}
@@ -123,7 +123,7 @@ Voor deze benadering zijn in totaliteit 927 lijnen code geschreven. Vergeleken m
 
 Het valt in overweging te nemen of de ontwikkelaar een gestructureerdere aanpak wil hanteren met als neveneffect meer code. Merk op dat indien een gestructureerdere aanpak wordt gehanteerd dit kan resulteren in een gemakkelijker onderhoud in de toekomst. 
 \subsubsection{Prestaties}
-Onderstaande tabel \ref{table:experiment-bloc-rxdart-statistics} beschrijft de CPU-tijd, inclusief enkele statistieken. De CPU-tijd wordt genoteerd in milliseconden. Alle getallen worden indien nodig afgerond op twee cijfers na de komma.
+Onderstaande tabel \ref{table:experiment-bloc-rxdart-statistics} beschrijft de CPU-tijd, inclusief enkele statistieken. Deze resultaten werden verworven tijdens het doorlopen van de 50 uitvoeringen. De CPU-tijd wordt genoteerd in milliseconden. Alle getallen worden indien nodig afgerond op twee cijfers na de komma.
 \begin{table}[H]
     \centering
     \begin{tabular}{c|c}
@@ -160,7 +160,7 @@ Voor deze benadering zijn in totaliteit 1042 lijnen code geschreven. In vergelij
 De oorzaak van de hoeveelheid aantal lijnen code is te wijten aan de herhalende code die geschreven moet worden bij Redux. Er worden actions en reducers opgesteld, deze zijn repetitief, als gevolg de vele aantal lijnen code. De voorkeuren en winkel state worden dan nog eens globaal ingewikkeld in de app state die gebruikt wordt doorheen de applicatie.
 
 \subsubsection{Prestaties}
-Tabel \ref{table:experiment-redux-statistics} beschrijft de CPU-tijd, inclusief enkele statistieken. De CPU-tijd wordt genoteerd in milliseconden. Alle getallen worden indien nodig afgerond op twee cijfers na de komma.
+Tabel \ref{table:experiment-redux-statistics} beschrijft de CPU-tijd, inclusief enkele statistieken. Deze resultaten werden verworven tijdens het doorlopen van de 50 uitvoeringen. De CPU-tijd wordt genoteerd in milliseconden. Alle getallen worden indien nodig afgerond op twee cijfers na de komma.
 \begin{table}[H]
     \centering
     \begin{tabular}{c|c}
@@ -210,7 +210,7 @@ Opmerking de \verb|provider| package wordt hier enkel en alleen gebruikt als opl
 \subsubsection{Aantal lijnen code}
 Voor deze benadering zijn in totaliteit 928 lijnen code geschreven. Dit resultaat komt in de buurt van de BLoC benadering.
 \subsubsection{Prestaties}
-Onderstaande tabel \ref{table:experiment-mobx-statistics} beschrijft de CPU-tijd, inclusief enkele statistieken. De CPU-tijd wordt genoteerd in milliseconden. Alle getallen worden indien nodig afgerond op twee cijfers na de komma.
+Onderstaande tabel \ref{table:experiment-mobx-statistics} beschrijft de CPU-tijd, inclusief enkele statistieken. Deze resultaten werden verworven tijdens het doorlopen van de 50 uitvoeringen. De CPU-tijd wordt genoteerd in milliseconden. Alle getallen worden indien nodig afgerond op twee cijfers na de komma.
 \begin{table}[H]
     \centering
     \begin{tabular}{c|c}

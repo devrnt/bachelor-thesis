@@ -42,7 +42,7 @@ Hoofdzakelijk zijn er twee soorten widgets te onderscheiden, een Stateless widge
 \subsection{Architectuur van Flutter}
 Een Flutter applicatie wordt geschreven in de taal Dart, meer over de programmeertaal Dart in sectie \ref{ch:dart}. Kort samengevat wordt de geschreven Dart code gecompileerd in de native ARM en x86 code. 
 Dit zorgt ervoor dat de applicatie volledige toegang heeft tot de apparaat services, zoals Bluetooth en camera. Dit is te zien op figuur \ref{fig:flutter-app-architecture}.
-Dit wil zeggen dat de applicatie met native prestaties op een appaat gebruikt kan worden.
+Dit wil zeggen dat de applicatie met native prestaties op een apparaat gebruikt kan worden.
 
 \begin{figure}[H]
     \centering
@@ -65,7 +65,7 @@ Flutter heeft hoofdzakelijk als platform mobiele apparaten, maar is zeker niet b
 \newline
 Opnieuw maakt de programmeertaal Dart het mogelijk om de Flutter code te compileren naar HTML, CSS en JavaScript.
 
-Voor Flutter Web was het nodig dat de \verb|dart:ui| opnieuw geïmplementeerd werd. De \verb|dart:ui| library bestaat uit de laagst mogelijke services die Flutter gebruikt om toepassingen op te bouwen. Bijvoorbeeld klassen voor het aansturen van de invoer en grafische tekst. Hier werd de code dat beroep deed op de Skia Engine, herschreven naar doelgroepen als DOM en Canvas. De Skia Graphics Engine is een open-source grafische bibliotheek geschreven in C++. De \verb|dart:ui| library zorgt ervoor dat de Dart code gecompileerd wordt naar JavaScript en dus geschikt is voor webapplicaties. Indien een widget niet omgezet kan worden in JavaScript, HTML en CSS, wordt het widget geschilderd op een canvas.
+Voor Flutter Web was het nodig dat de \verb|dart:ui| opnieuw geïmplementeerd werd. De \verb|dart:ui| library bestaat uit de laagst mogelijke services die Flutter gebruikt om toepassingen op te bouwen. Bijvoorbeeld klassen voor het aansturen van de invoer en grafische tekst. Hier werd de code die beroep deed op de Skia Engine, herschreven naar doelgroepen als DOM en Canvas. De Skia Graphics Engine is een open-source grafische bibliotheek geschreven in C++. De \verb|dart:ui| library zorgt ervoor dat de Dart code gecompileerd wordt naar JavaScript en dus geschikt is voor webapplicaties. Indien een widget niet omgezet kan worden in JavaScript, HTML en CSS, wordt het widget geschilderd op een canvas.
 \newline
 Met Flutter Web is het Flutter framework opnieuw een stap dichter naar een volledig cross-platform ontiwkkelingsomgeving.
 Deze structuur wordt weergegeven in figuur \ref{fig:flutter-web-architecture}
@@ -79,7 +79,7 @@ Deze structuur wordt weergegeven in figuur \ref{fig:flutter-web-architecture}
 \subsection{Dart}
 \label{ch:dart}
 De taal die Flutter gebruikt is Dart. De populariteit van deze taal is de laatste tijd gestegen, mede dankzij de populariteit van Flutter. Met een groei van 532\% afgelopen jaar, kan Dart bekroond worden als de snelst groeiende taal \autocite{Chan2019}. 
-Dit gedeelte is voornamelijk gebasseerd op een artikel van een Senior Software Engineer bij Google, Wm Leler \autocite{Leler2017a}.
+Dit gedeelte is voornamelijk gebaseerd op een artikel van een Senior Software Engineer bij Google, Wm Leler \autocite{Leler2017a}.
 
 De syntax van Dart is gelijkaardig aan die van Java, C\# en Javascript.
 Een belangrijke troef van Dart is dat het zowel Ahead Of Time (AOT) als Just In Time (JIT) gecompileerd kan worden. Het feit dat Dart AOT gecompileerd kan worden heeft als gevolg dat een Flutter app in productie gebruik maakt van native prestaties. Dit zorgt voor een snelle en performante applicatie in productie.
@@ -108,11 +108,11 @@ Ephemeral State is de lokale state, ook wel de UI state genoemd. Deze state word
 Om terug het voorbeeld van het invoerveld te hernemen: er wordt geluisterd wanneer er een karakter wordt getypt in het veld. Vervolgens wordt de state van het invoerveld bijgewerkt en hierna wordt \verb|setState()| opgeroepen zodat het widget opnieuw wordt opgebouwd met de bijgewerkte waarde.
 \newline \newline
 De andere soort state volgens de Flutter documentatie \autocite{Developers2019} is App State, ook wel shared state genoemd. Deze soort state wordt door verschillende widgets van de applicatie gedeeld.
-Een voorbeeld van dit soort state: een lijst van nieuws artikels, die respectievelijk gemarkeerd kunnen worden als gelezen en niet-gelezen. Wanneer een artikel gemarkeerd is aan gelezen moet deze verwijderd worden van de lijst. 
+Een voorbeeld van dit soort state: een lijst van nieuws artikels, die respectievelijk gemarkeerd kunnen worden als gelezen en niet-gelezen. Wanneer een artikel gemarkeerd is als gelezen dan moet deze verwijderd worden uit de lijst. 
 \newline
 
-Over het algemeen is er geen duidelijke regel wanneer Ephemeral State of App State gebruikt moet worden. Dit is volledige afhankelijk van de complexiteit van de applicatie en de persoonlijke voorkeur van de ontwikkelaar.
-Wanneer een applicatie nood heeft aan de nodige complexiteit wordt er aangeraden om over te schakelen naar App State \ref{fig:ephemeral-vs-app-state-flutter}. Theoretisch is het mogelijk om een volledige applicatie te ontwikkelen met State en setState(), maar dit wordt afgeraden \autocite{Developers2019}.
+Over het algemeen is er geen duidelijke regel wanneer Ephemeral State of App State gebruikt moet worden. Dit is volledig afhankelijk van de complexiteit van de applicatie en de persoonlijke voorkeur van de ontwikkelaar.
+Wanneer een applicatie nood heeft aan de nodige complexiteit wordt er aangeraden om over te schakelen naar App State, zie figuur \ref{fig:ephemeral-vs-app-state-flutter}. Theoretisch is het mogelijk om een volledige applicatie te ontwikkelen met State en setState(), maar dit wordt afgeraden \autocite{Developers2019}.
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/stand-van-zaken/ephemeral-vs-app-state-flutter.png}
     \caption{Ephemeral- vs App state in Flutter \autocite{Developers2019}}
@@ -142,7 +142,7 @@ Wanneer er nood is aan een relatief simpele benadering van State Management in e
     \caption{De drie concepten bij ScopedModel \autocite{Boelens2019}}
     \label{fig:scopedmodel}
 \end{figure}
-Als eerst wordt een klasse gedefinieerd die de 
+Als eerste wordt een klasse gedefinieerd die de 
 data en business logica zal bijhouden. Deze klasse heeft als kenmerk dat er geluisterd kan worden naar deze klasse. Als er in de Model klasse een wijziging aangebracht wordt laat de klasse de wijziging aan zijn kinderen weten via \verb|notifyListeners()|.
 \newline
 De ScopedModel widget maakt het mogelijk om een Model mee te geven, dit zorgt ervoor dat al de kinderen van deze ScopedModel toegang hebben tot het meegegeven Model. Een kind van een ScopedModel kan het Model oproepen met \verb|ScopedModel.of<Model>(context)|.
@@ -156,7 +156,7 @@ ScopedModelDescendant<CounterModel>(
     },
 );
 \end{minted}
-Hier wordt geluisterd naar een wijziging in een \verb|CounterModel|. Wanneer deze wijzigt, met andere woorden \verb|notifyListeners()| wordt opgeroepen in het model, wordt de \verb|builder| functie aangeroepen. De waarde van de counter wordt op het scherm getoond. Nu is het mogelijk om op een ander scherm de counter te verhogen en wordt de tekst automatisch opnieuw opgebouwd. Er kan ook gebruikt gemaakt worden van \verb|ScopedModel.of<CounterModel>(context)| om het model in eender welke widget op te roepen. 
+Hier wordt geluisterd naar een wijziging in een \verb|CounterModel|. Wanneer deze wijzigt, met andere woorden \verb|notifyListeners()| wordt opgeroepen in het model, wordt de \verb|builder| functie aangeroepen. De waarde van de counter wordt op het scherm getoond. Nu is het mogelijk om op een ander scherm de counter te verhogen en wordt de tekst automatisch opnieuw opgebouwd. Er kan ook gebruik gemaakt worden van \verb|ScopedModel.of<CounterModel>(context)| om het model in eender welke widget op te roepen. 
 
 Indien nood is aan meerdere modellen, kunnen de ScopedModelDescendant widgets genest worden of opnieuw via de static methode \verb|ScopedModel.of| opgeroepen worden.
 
@@ -389,14 +389,14 @@ De laatste en ook meest voorkomende manier is om de BLoC mee te geven aan een vo
 \subsection{Redux}
 \label{ch:redux}
 \subsubsection{Principes}
-Redux is een gekende library voor het beheren van state. De library is vooral gekend bij JavaScript ontwikkelaars en wordt vaak gebruikd in Angular of React applicaties. Angular en React zijn beiden JavaScript frameworks voor het ontwikkelen van webapplicaties. Echter is de library ook bruikbaar voor Flutter applicaties, aangezien de concepten dezelfde zijn. De package is beschikbaar in de package manager van Dart (pub.dev) onder de naam \verb|flutter_redux|.
+Redux is een gekende library voor het beheren van state. De library is vooral gekend bij JavaScript ontwikkelaars en wordt vaak gebruikt in Angular of React applicaties. Angular en React zijn beiden JavaScript frameworks voor het ontwikkelen van webapplicaties. Echter is de library ook bruikbaar voor Flutter applicaties, aangezien de concepten dezelfde zijn. De package is beschikbaar in de package manager van Dart (pub.dev) onder de naam \verb|flutter_redux|.
 
 Een toelichting over een paar begrippen die voorkomen in Redux.
 Actions beschrijven alleen maar wat er gebeurd is. Elke action beschikt over een reducer, die de state aanpast.
 
-Een Reducer is een synchrone functie die enige verwerking uitvoert op basis van de combinatie action - state. De manipulatie van de state leidt kan tot een nieuwe state in de Store. De Reducer is de enige die de state mag veranderen. Op deze manier zit de business logica alleen verwerkt in de Reducer. 
+Een Reducer is een synchrone functie die enige verwerking uitvoert op basis van de combinatie action - state. De manipulatie van de state kan leiden tot een nieuwe state in de Store. De Reducer is de enige die de state mag veranderen. Op deze manier zit de business logica alleen verwerkt in de Reducer. 
 
-Een Middleware is een functie, meestal gericht op het uitvoeren van asynchrone taken, gebasseerd op een Action. Een Middleware maakt gebruik van State maar wijzigt deze niet. Een voorbeeld van een Middleware kan een logger functie zijn. Een ontwikkelaar kan ervoor zorgen dat elke action gelogd wordt, dit kan met behulp van een Middleware.
+Een Middleware is een functie, meestal gericht op het uitvoeren van asynchrone taken, gebaseerd op een Action. Een Middleware maakt gebruik van State maar wijzigt deze niet. Een voorbeeld van een Middleware kan een logger functie zijn. Een ontwikkelaar kan ervoor zorgen dat elke action gelogd wordt, dit kan met behulp van een Middleware.
 
 Redux bestaat uit een paar verschillende principes: er wordt gebruik gemaakt van een unidirectionele data flow. De store houdt maar één state bij en heeft maar één aanspreekpunt, namelijk via \verb|dispatch|. De \verb|dispatch| accepteert alleen maar \verb|actions| als argument.
 
@@ -412,7 +412,7 @@ Over het algemeen is de werking van Redux samen te vatten zoals op de figuur \re
     \label{fig:redux-working}
 \end{figure}
 
-Aangezien de manier in Redux voor vele ontwikkelaars een wijziging in de gedachtegang veresit, wordt een situatie in Redux geschetst waarbij elke stap uitvoerig wordt besproken.
+Aangezien de manier in Redux voor vele ontwikkelaars een wijziging in de gedachtegang vereist, wordt een situatie in Redux geschetst waarbij elke stap uitvoerig wordt besproken.
 Stel een applicatie toont een pagina met één knop. De applicatie bevindt zich in een initiële state. Dit wordt voorgesteld in figuur \ref{fig:redux-working-detailed-1}.
 
 \begin{figure}[H]
@@ -448,7 +448,7 @@ De Store zorgt ervoor dat alle luisteraars worden geïnformeerd wanneer de State
     \label{fig:redux-working-detailed-4}
 \end{figure}
 
-In het \verb|flutter_redux| package zijn handige widgets beschikbaar. Zo zorgt de \verb|StoreProvider| widget ervoor dat de Redux Store wordt doorgegeven aan alle onderliggende widgets in de widget tree. De \verb|StoreBuilder| haalt de Store uit de \verb|StoreProvider| en geeft die door aan een widget builder function. Het nadeel bij de \verb|StoreBuilder| is dat de widget in de build functie telkens zal worden opnieuw opgebouwd wanneer de State wijzigt, dit kan leiden tot onnodige rerenders. De \verb|StoreConnector| biedt hiervoor de oplossing. De \verb|StoreConnector| haalt de Store uit de dichtstbijzijnde StoreProvider voorouder en zet de Store om in een ViewModel. Dit ViewModel zal alleen de waarde bevatten dat van belang is voor desbetreffende widget. Zo wordt een widget niet onnodig opgebouwd wanneer de Store wijzigt, maar alleen wanneer de waarde, gespecifieerd in de ViewModel, wijzigt. Bijvoorbeeld: de Redux Store bevat een counter waarde en een willekeurige tekst, de code voor de StoreConnecter wordt de volgende: 
+In het \verb|flutter_redux| package zijn handige widgets beschikbaar. Zo zorgt de \verb|StoreProvider| widget ervoor dat de Redux Store wordt doorgegeven aan alle onderliggende widgets in de widget tree. De \verb|StoreBuilder| haalt de Store uit de \verb|StoreProvider| en geeft die door aan een widget builder function. Het nadeel bij de \verb|StoreBuilder| is dat de widget in de build functie telkens zal worden opnieuw opgebouwd wanneer de State wijzigt, dit kan leiden tot onnodige rerenders. De \verb|StoreConnector| biedt hiervoor de oplossing. De \verb|StoreConnector| haalt de Store uit de dichtstbijzijnde StoreProvider voorouder en zet de Store om in een ViewModel. Dit ViewModel zal alleen de waarde bevatten die van belang is voor desbetreffende widget. Zo wordt een widget niet onnodig opgebouwd wanneer de Store wijzigt, maar alleen wanneer de waarde, gespecifieerd in de ViewModel, wijzigt. Bijvoorbeeld: de Redux Store bevat een counter waarde en een willekeurige tekst, de code voor de StoreConnecter wordt de volgende: 
 
 \begin{minted}{dart}
 new StoreConnector<int, CounterViewModel>(
