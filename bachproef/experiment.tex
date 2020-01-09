@@ -20,9 +20,9 @@ Voor deze benadering wordt enkel beroep gedaan op de \verb|scoped_model| package
 
 \subsection{Resultaten}
 \subsubsection{Aantal lijnen code}
-Deze benadering vereist geen boilerplate code en dit reflecteert zich in het aantal lijnen code. Voor deze benadering zijn in totaliteit 802 lijnen code geschreven. In vergelijking met het aantal lijnen code van de boilerplate code, die 711 bedraagt, is dit geen groot verschil. Dit komt neer op een procentueel verschil van 12%.
+Deze benadering vereist geen boilerplate code en dit reflecteert zich in het aantal lijnen code. Voor deze benadering zijn in totaliteit 802 lijnen code geschreven. In vergelijking met het aantal lijnen code van de boilerplate code, die 711 bedraagt, is dit geen groot verschil. Dit komt neer op een procentueel verschil van 12\%.
 
-Op basis van het aantal lijnen code wordt de ScopedModel als een toegankelijke benadering beschouwd die snel is uit te schrijven.
+Op basis van het aantal lijnen code wordt ScopedModel als een toegankelijke benadering beschouwd die snel is uit te schrijven.
 
 \subsubsection{Prestaties}
 Onderstaande tabel \ref{table:experiment-scopedmodel-statistics} beschrijft de CPU-tijd, inclusief enkele statistieken. Deze resultaten werden verworven tijdens het doorlopen van de 50 uitvoeringen. De CPU-tijd wordt genoteerd in milliseconden. Alle getallen worden indien nodig afgerond op twee cijfers na de komma.
@@ -230,7 +230,7 @@ Onderstaande tabel \ref{table:experiment-mobx-statistics} beschrijft de CPU-tijd
 Tijdens het doorlopen van de MobX benadering zijn in totaliteit 572 frames overgeslagen. Dit komt neer op een gemiddelde van 11.40 overgeslagen frames per uitvoering.
 
 \section{Samenvatting}
-In tabel \ref{table:amount-lines-of-code} worden het aantal lijnen code per benadering opgesomd. De rij ``gecorrigeerd'' is het aantal lijnen code van de benadering min het aantal lijnen code van de boilerplate code. Het valt op dat de ScopedModel en Provider benadering met voorsprong het minst aantal lijnen code hebben. Redux heeft overduidelijk het meest aantal lijnen code. Dit valt te verklaren door de hoeveelheid repetitieve code die geschreven moet worden. \newline \newline
+In tabel \ref{table:amount-lines-of-code} worden het aantal lijnen code per benadering opgesomd. De rij ``gecorrigeerd'' is het aantal lijnen code van de benadering min het aantal lijnen code van de boilerplate code. De rij ``gecorrigeerd (in \%)'' bevat het procentueel verschil met de boilerplate code. Het valt op dat de ScopedModel en Provider benadering met voorsprong het minst aantal lijnen code hebben. Redux heeft overduidelijk het meest aantal lijnen code. Dit valt te verklaren door de hoeveelheid repetitieve code die geschreven moet worden. \newline \newline
 Indien de ontwikkelaar een keuze moet maken tussen de verschillende benaderingen op basis van het aantal lijnen code zijn ScopedModel en Provider de geschikte kandidaten. Deze zijn immers integreerbaar zonder veel extra code uit te schrijven. Ook vergen beide State Management bendaringen geen wijziging in de architectuur van de applicatie. \newline
 Redux is overduidelijk de verliezer op basis van het aantal lijnen code. De verschillen tussen de MobX en BLoC zijn verwaarloosbaar.
 \begin{table}[H]
@@ -238,7 +238,9 @@ Redux is overduidelijk de verliezer op basis van het aantal lijnen code. De vers
     \begin{tabular}{c|c|c|c|c|c}
         & \textbf{ScopedModel} & \textbf{Provider} & \textbf{BLoC} & \textbf{Redux} & \textbf{MobX} \\ \hline
         Totaal               & 802   &  804     &  927     &  1042    &  928        \\ \hline
-        Gecorrigeerd         & 91    &  93      &  216     &  331     &  217
+        Gecorrigeerd         & 91    &  93      &  216     &  331     &  217        \\ \hline
+        Gecorrigeerd (in \%) & 11,34\%  & 11,56\% &  23,30\%    &  31,77\%     &  23,38\%
+
     \end{tabular}
     \caption{Statistieken van het aantal lijnen code van alle benaderningen}
     \label{table:amount-lines-of-code}

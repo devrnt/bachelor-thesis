@@ -17,26 +17,26 @@
 %
 %\textcite{Knuth1998} schreef een van de standaardwerken over sorteer- en zoekalgoritmen. Experten zijn het erover eens dat cloud computing een interessante opportuniteit vormen, zowel voor gebruikers als voor dienstverleners op vlak van informatietechnologie~\autocite{Creeger2009}.
 
-In vorig hoodstuk werd Flutter kort geïntroduceerd als een veelomvattend cross-platform framework. In dit hoofdstuk wordt de huidige stand van zaken van Flutter besproken. Aangezien Flutter recentelijk is geïntroduceerd wordt het framework regelmatig bijgewerkt met nieuwe functionaliteiten. Dit hoofdstuk bouwt verder op de literatuurstudie van Bram De Coninck \autocite{DeConinck2019}, daarnaast wordt het concept State Management uitvoerig besproken. Tenslotte wordt State Management in Flutter en de verschillende State Management benaderingen besproken. 
+In vorig hoofdstuk werd Flutter kort geïntroduceerd als een veelomvattend cross-platform framework. In dit hoofdstuk wordt de huidige stand van zaken van Flutter besproken. Aangezien Flutter recentelijk is geïntroduceerd wordt het framework regelmatig bijgewerkt met nieuwe functionaliteiten. Dit hoofdstuk bouwt verder op de literatuurstudie van Bram De Coninck \autocite{DeConinck2019}, daarnaast wordt het concept State Management uitvoerig besproken. Tenslotte wordt State Management in Flutter en de verschillende State Management benaderingen besproken. 
 \newline
 
 \section{Flutter}
 \subsection{Populariteit van Flutter}
 Flutter is een UI toolkit van Google voor het bouwen van native gecompileerde applicaties voor mobile, web en desktop vanuit één enkele codebase. Doordat Flutter meerdere platformen kan bereiken met slechts één codebase kreeg het heel wat interesse. 
 
-Flutter kenmerkt zich vooral door de snelle ontwikkelingsomgeving. Mede dankzij de Stateful Hot Reload en de reeds tal van beschikbare widgets, de bouwstenen van een Flutter applicatie. Stateful Hot Reload zorgt ervoor dat de nieuwe broncode geïnjecteerd wordt in de Dart Virtual Machine (VM), waardoor de Flutter applicatie zich automatisch herbouwt. Dit zorgt ervoor dat wijzigingen direct zichtbaar zijn in de applicatie tijdens de ontwikkelingsfase. Het Flutter framework voorziet tal van widgets zodat de ontwikkelaar niet alles zelf hoeft te schrijven. De documentatie van deze widgets zijn te vinden op de site van Flutter \autocite{Flutter2019}. Dit weerhoudt de ontwikkelaar niet om deze widgets naar zijn of haar behoefte aan te passen.
+Flutter kenmerkt zich vooral door de snelle ontwikkelingsomgeving. Mede dankzij de Stateful Hot Reload en de reeds tal van beschikbare widgets, de bouwstenen van een Flutter applicatie. Stateful Hot Reload zorgt ervoor dat de nieuwe broncode geïnjecteerd wordt in de Dart Virtual Machine (VM), waardoor de Flutter applicatie zich automatisch herbouwt. Dit zorgt ervoor dat wijzigingen direct zichtbaar zijn in de applicatie tijdens de ontwikkelingsfase. Het Flutter framework voorziet tal van widgets zodat de ontwikkelaar niet alles zelf hoeft te schrijven. De documentatie van deze widgets is te vinden op de site van Flutter \autocite{Flutter2019}. Dit weerhoudt de ontwikkelaar niet om deze widgets naar eigen behoefte aan te passen.
 
 Een tweede kenmerk van Flutter is dat de eindapplicaties beschikken over native performances. Flutter compileert de broncode naar native ARM-machinecode en x86 code door gebruik te maken van de Dart Native Compilers \autocite{Dart2019}.
 
 Flutter is een open-source project, gepubliceerd door Google, waardoor het beroep kan doen op de nodige financiële noden om het framework verder te laten groeien. 
-Deze literatuurstudie is gebaseerd op de bachelorproef van \autocite{DeConinck2019}
+Deze literatuurstudie is gedeeltelijk gebaseerd op de bachelorproef van \autocite{DeConinck2019}
 
 \subsection{Alles is een widget}
 \label{ch:alles-is-een-widget}
 Het kernprincipe van Flutter is dat alles een widget is. Een widget is als het ware een bouwsteen van een applicatie. Een widget kan voorkomen in verschillende gedaantes, zo zijn een knop, een lettertype en een kleur allemaal widgets. 
 
 Een widget wordt beschouwd als een component van een groter geheel, waarbij elke widget zijn specifiek doel heeft.
-Hoofdzakelijk zijn er twee soorten widgets te onderscheiden, een Stateless widget en een Stateful widget. Meer uitleg hierover in sectie \ref{ch:state}. Een voorbeeld van een stateless widget is een foto, dit soort widget houdt geen interne state bij. Een invoerveld is een voorbeeld van een Stateful widget, deze houdt een interne state bij, bijvoorbeeld de ingevoerde tekst. 
+Hoofdzakelijk zijn er twee soorten widgets te onderscheiden, een Stateless widget en een Stateful widget. Meer uitleg hierover volt in sectie \ref{ch:state}. Een voorbeeld van een stateless widget is een foto, dit soort widget houdt geen interne state bij. Een invoerveld is een voorbeeld van een Stateful widget, deze houdt een interne state bij, bijvoorbeeld de ingevoerde tekst. 
 \newline
 
 \subsection{Architectuur van Flutter}
@@ -65,9 +65,9 @@ Flutter heeft hoofdzakelijk als platform mobiele apparaten, maar is zeker niet b
 \newline
 Opnieuw maakt de programmeertaal Dart het mogelijk om de Flutter code te compileren naar HTML, CSS en JavaScript.
 
-Voor Flutter Web was het nodig dat de \verb|dart:ui| opnieuw geïmplementeerd werd. De \verb|dart:ui| library bestaat uit de laagst mogelijke services die Flutter gebruikt om toepassingen op te bouwen. Bijvoorbeeld klassen voor het aansturen van de invoer en grafische tekst. Hier werd de code die beroep deed op de Skia Engine, herschreven naar doelgroepen als DOM en Canvas. De Skia Graphics Engine is een open-source grafische bibliotheek geschreven in C++. De \verb|dart:ui| library zorgt ervoor dat de Dart code gecompileerd wordt naar JavaScript en dus geschikt is voor webapplicaties. Indien een widget niet omgezet kan worden in JavaScript, HTML en CSS, wordt het widget geschilderd op een canvas.
+Voor Flutter Web was het nodig dat de \verb|dart:ui| opnieuw geïmplementeerd werd. De \verb|dart:ui| library bestaat uit de laagst mogelijke services die Flutter gebruikt om toepassingen op te bouwen. Bijvoorbeeld klassen voor het aansturen van de invoer en grafische tekst. Hier werd de code die beroep deed op de Skia Engine herschreven naar doelgroepen als DOM en Canvas. De Skia Graphics Engine is een open-source grafische bibliotheek geschreven in C++. De \verb|dart:ui| library zorgt ervoor dat de Dart code gecompileerd wordt naar JavaScript en dus geschikt is voor webapplicaties. Indien een widget niet omgezet kan worden in JavaScript, HTML en CSS, wordt het widget geschilderd op een canvas.
 \newline
-Met Flutter Web is het Flutter framework opnieuw een stap dichter naar een volledig cross-platform ontiwkkelingsomgeving.
+Met Flutter Web is het Flutter framework opnieuw een stap dichter naar een volledig cross-platform ontwikkelingsomgeving.
 Deze structuur wordt weergegeven in figuur \ref{fig:flutter-web-architecture}
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/stand-van-zaken/flutter-web-architecture.png}
@@ -119,8 +119,8 @@ Wanneer een applicatie nood heeft aan de nodige complexiteit wordt er aangeraden
     \label{fig:ephemeral-vs-app-state-flutter}
 \end{figure}
 
-Dit resulteert in het ontstaan van verschillende State Management benaderingen. Tal van benaderingen van State Management worden beschikbaar gesteld door middel van libraries. Deze State Mangement libraries zorgen dat het beheren van state in een applicatie versimpeld wordt.
-Het doel van een State Management is om het leven van de ontwikkelaar eenvoudiger te
+Dit resulteert in het ontstaan van verschillende State Management benaderingen. Tal van benaderingen van State Management worden beschikbaar gesteld door middel van libraries. Deze State Mangement benaderingen zorgen dat het beheren van state in een applicatie versimpeld wordt.
+Het doel van een State Management benadering is om het leven van de ontwikkelaar eenvoudiger te
 maken door state makkelijker beheersbaar te maken. Verder wordt de UI gescheiden van
 de business logica, waardoor deze logica makkelijker getest kan worden.
 
@@ -235,7 +235,7 @@ De \verb|Provider| package is gelijkaardig aan de \verb|ScopedModel| benadering.
 
 \subsection{BLoC met RxDart}
 \subsubsection{Business Logic Component}
-Het BLoC patroon dat staat als afkorting voor Business Logic Component. Het BLoC werd oorspronkelijk aangeboden als oplossing voor het delen van dezelfde business logica tussen Flutter en AngularDart. AngularDart is een open-source project gebouwd bovenop het Dart Web Platform, het wordt veelal gebruikt voor het ontwikkelen van webapplicaties in Dart. Hedendaags wordt BLoC door Google aangeraden als een superieure State Management techniek. Het BLoC pattern maakt gebruik van Streams die beschikbaar zijn in Dart, maar vaak wordt beroep gedaan op een gebruiksvriendelijkere library namelijk ReactiveX, zie \ref{ch:reactivex}. De ReactiveX library is een laag bovenop de Streams.
+BLoC staat als afkorting voor Business Logic Component. Het BLoC werd oorspronkelijk aangeboden als oplossing voor het delen van dezelfde business logica tussen Flutter en AngularDart. AngularDart is een open-source project gebouwd bovenop het Dart Web Platform, het wordt veelal gebruikt voor het ontwikkelen van webapplicaties in Dart. Hedendaags wordt BLoC door Google aangeraden als een superieure State Management techniek. Het BLoC pattern maakt gebruik van Streams die beschikbaar zijn in Dart, maar vaak wordt beroep gedaan op een gebruiksvriendelijkere library namelijk ReactiveX, zie \ref{ch:reactivex}. De ReactiveX library is een laag bovenop de Streams.
 \newline \newline
 De ReactiveX (rX) library is in Dart beschikbaar onder de naam RxDart.
 
@@ -279,7 +279,7 @@ final streamTransformer = StreamTransformer<num, num>.fromHandlers(
 );
 \end{minted}
 
-Bij streams zijn er twee soorten types: single-subscription- en broadcast streams. Bij een single-subscription stream kan er slechts één luisteraar geabonneerd zijn, zelfs wanneer de subscription geannuleerd wordt. Indien er een tweede maal geluisterd wordt naar een single-subscription stream wordt een gepaste error gegeven: \verb| Stream has already been listened to|.
+Bij streams zijn er twee soorten types: single-subscription en broadcast streams. Bij een single-subscription stream kan er slechts één luisteraar geabonneerd zijn, zelfs wanneer de subscription geannuleerd wordt. Indien er een tweede maal geluisterd wordt naar een single-subscription stream wordt een gepaste error gegeven: \verb| Stream has already been listened to|.
 
 Bij een broadcast stream kunnen er meerdere luisteraars zijn. Het is mogelijk om op elk moment een luisteraar aan een broadcast stream toe te voegen. De nieuwe luisteraar ontvangt de gebeurtenissen vanaf het moment dat deze naar de stream begint te luisteren.
 
@@ -297,16 +297,16 @@ StreamBuilder<Counter>(
     },
 );
 \end{minted}
-De initiële data wordt ingesteld op 0 wanneer de \verb|counterStream| nog geen data bevat. Dit dat de StreamBuilder widget bij de initiële render 0 zal gebruiken als data. De \verb|builder| functie zorgt ervoor dat de StreamBuilder weet welke widget opgebouwd moet worden wanneer de \verb|StreamBuilder| nieuwe data ontvangt via de \verb|stream| property.
+De initiële data wordt ingesteld op 0 wanneer de \verb|counterStream| nog geen data bevat. Dit zorgt dat de StreamBuilder widget bij de initiële render 0 zal gebruiken als data. De \verb|builder| functie zorgt ervoor dat de StreamBuilder weet welke widget opgebouwd moet worden wanneer de \verb|StreamBuilder| nieuwe data ontvangt via de \verb|stream| property.
 
-In volgende sectie wordt het rxDart package besproken, deze package breidt de functionaliteit van de originele Dart Streams uit om te voldoen aan de ReactiveX standaarden.
+In volgende sectie wordt het RxDart package besproken, deze package breidt de functionaliteit van de originele Dart Streams uit om te voldoen aan de ReactiveX standaarden.
 
 \subsubsection{ReactiveX in Dart}
 \label{ch:reactivex}
 De ReactiveX library is een library die de functionaliteiten van streams in een programmeertaal uitbreidt. Zo is ReactiveX beschikbaar in JavaScript onder de naam RxJS, maar relevanter voor dit onderzoek, in Dart: de RxDart library.
 
 
-Zoals reeds vermeld is de RxDart package een implementatie van de ReactiveX API in Dart. Zowel Dart Streams als RxDart worden gebruikt om streams te maken en beheren, maar beide ontwikkelaars gebruiken een andere terminologie.
+Zoals reeds vermeld is de RxDart package een implementatie van de ReactiveX API in Dart. Zowel Dart Streams als RxDart worden gebruikt om streams te maken en te beheren, maar beide ontwikkelaars gebruiken een andere terminologie.
 Een Stream in Dart wordt voorgesteld als een \verb|Observable| in RxDart. Een StreamController is een \verb|Subject| in RxDart, zie tabel \ref{table:terminologie-rxdart-dart}.
 
 \begin{table}[H]
@@ -343,7 +343,7 @@ De tweede variatie is een BehaviorSubject, ook dit is een broadcast StreamContro
     \label{fig:rxdart-behaviorsubject}
 \end{figure}
 
-Als derde variatie is er de ReplaySubject. Dit is een broadcast StreamController die alle events uitzendt naar zijn luisteraars die reeds zijn voorgekomen sinds het begin van de stream zijn levencyclus. Zie figuur \ref{fig:rxdart-replaysubject}.
+Als derde variatie is er de ReplaySubject. Dit is een broadcast StreamController die alle events uitzendt naar zijn luisteraars die reeds zijn voorgekomen sinds het begin van de stream zijn levenscyclus. Zie figuur \ref{fig:rxdart-replaysubject}.
 
 \begin{figure}[H]
     \centering
@@ -382,7 +382,7 @@ Anders gezegd: de input van het BLoC de sink is en de output van het BLoC de str
 \end{figure}
 
 Er zijn verschillende manieren om de BLoC beschikbaar te stellen aan de widgets. 
-Als eerste via een globale singleton. Dit wordt niet aangeraden aangezien er geen class destructor is in Dart, met andere woorden: mogelijkheid op memory leaks. Dart is een garbage-collected taal dit wil zeggen dat elk object, waar er geen verwijzing naar is, wordt door het runtime-systeem vrijgegeven. 
+Als eerste via een globale singleton. Dit wordt niet aangeraden aangezien er geen class destructor is in Dart, met andere woorden: mogelijkheid op memory leaks. Dart is een garbage-collected taal. Dit wil zeggen dat elk object, waar er geen verwijzing naar is, wordt door het runtime-systeem vrijgegeven. 
 Een tweede mogelijkheid is om een lokale instantie te maken van de BLoC. Dit is een werkbare oplossing onder sommige omstandigheden. Merk hierbij op dat deze lokale instantie gemaakt wordt in een StatefulWidget, zodat de subscriptions op de streams in de \verb|dispose()| beëindigd kunnen worden.
 De laatste en ook meest voorkomende manier is om de BLoC mee te geven aan een voorouder widget, die een implementatie is van een InheritedWidget of een StatefulWidget. Deze widget zorgt ervoor dat de BLoC ter beschikking gesteld wordt voor al zijn nakomelingen. Hiervoor wordt gebruikt gemaakt van een \verb|InheritedWidget|. Deze widget zorgt ervoor dat de nakomelingen in deze widget tree toegang hebben tot de BLoC.
 
@@ -451,7 +451,7 @@ De Store zorgt ervoor dat alle luisteraars worden geïnformeerd wanneer de State
 In het \verb|flutter_redux| package zijn handige widgets beschikbaar. Zo zorgt de \verb|StoreProvider| widget ervoor dat de Redux Store wordt doorgegeven aan alle onderliggende widgets in de widget tree. De \verb|StoreBuilder| haalt de Store uit de \verb|StoreProvider| en geeft die door aan een widget builder function. Het nadeel bij de \verb|StoreBuilder| is dat de widget in de build functie telkens zal worden opnieuw opgebouwd wanneer de State wijzigt, dit kan leiden tot onnodige rerenders. De \verb|StoreConnector| biedt hiervoor de oplossing. De \verb|StoreConnector| haalt de Store uit de dichtstbijzijnde StoreProvider voorouder en zet de Store om in een ViewModel. Dit ViewModel zal alleen de waarde bevatten die van belang is voor desbetreffende widget. Zo wordt een widget niet onnodig opgebouwd wanneer de Store wijzigt, maar alleen wanneer de waarde, gespecifieerd in de ViewModel, wijzigt. Bijvoorbeeld: de Redux Store bevat een counter waarde en een willekeurige tekst, de code voor de StoreConnecter wordt de volgende: 
 
 \begin{minted}{dart}
-new StoreConnector<int, CounterViewModel>(
+StoreConnector<int, CounterViewModel>(
     converter: (store) => CounterViewModel.from(store),
     builder: (context, counterViewModel) {
         return Text(counterViewModel.value);
@@ -507,4 +507,4 @@ Deze drie principes zijn terug te vinden op figuur \ref{fig:mobx-principles}:
 Een ander begrip dat terug komt in MobX is een Store. Dit is een klasse die de bijhorende Observables zal bevatten. Bijvoorbeeld een counter Store zal de waarde bijhouden van de counter inclusief een actie om deze te incrementeren.
 
 De  \verb|flutter_mobx| package bevat tal van handige widgets zoals een Observer widget die automatisch wordt opgebouwd wanneer de waarde van een Observable wijzigt. 
-Om de Store klasse leesbaar te houden wordt gebruikt gemaakt van \verb|mobx_codegen|. Deze package zorgt dat er geen boilerplate code geschreven moet worden. 
+Om de Store klasse leesbaar te houden wordt gebruikt gemaakt van \verb|mobx_codegen|. Deze package zorgt ervoor dat geen boilerplate code geschreven moet worden. 
